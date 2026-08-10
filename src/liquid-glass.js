@@ -14,16 +14,28 @@ const NS = 'http://www.w3.org/2000/svg';
 const XLINK = 'http://www.w3.org/1999/xlink';
 
 const DEFAULTS = {
-  /** سماكة شريط الانكسار عند الحافة (بكسل) */
+  /** أقصى سماكة لشريط الانكسار عند الحافة (بكسل) */
   edge: 14,
+  /** نسبة الشريط إلى أصغر بُعد للعنصر — تمنع تداخل الشريطين في العناصر الصغيرة */
+  edgeRatio: 0.32,
   /** حِدّة تركّز الانكسار عند الحافة */
-  falloff: 2.3,
+  falloff: 1.6,
   /** أقصى إزاحة بالبكسل */
   scale: 22,
+  /** نسبة الإزاحة إلى أصغر بُعد — إزاحة كبيرة على زر صغير تُنتج حوافّ حادّة */
+  scaleRatio: 0.18,
   /** تمويه إضافي فوق الانكسار */
   blur: 0.3,
   /** تشبّع اللون خلف الزجاج */
   saturate: 1.3,
+  /**
+   * أصغر بُعد يستحق الانكسار (بكسل).
+   * دون هذا الحد يقترب شريط الانكسار من نصف ارتفاع العنصر، فيتحوّل الانكسار
+   * إلى تكبير عنيف تظهر معه حافّة حادّة داخل الزر — وقد رُصد ذلك فعليًا على
+   * أزرار 58×44 فوق واجهة الفيديو في كروم. هذه العناصر تكتفي بتمويه CSS،
+   * وهو ما يظهر أصلًا في سفاري وفايرفوكس.
+   */
+  minSize: 48,
 };
 
 let uid = 0;
@@ -75,6 +87,19 @@ function sdRoundRect(px, py, halfW, halfH, r) {
 
 const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 
+/** تنعيم هيرميت: مشتقّة صفرية عند الطرفين فلا تظهر حوافّ حادّة */
+const smoothstep = (t) => t * t * (3 - 2 * t);
+
+/** سماكة شريط الانكسار: محدودة بنسبة من أصغر بُعد حتى لا يتداخل الشريطان */
+function edgeWidth(w, h, opts) {
+  return Math.max(1, Math.min(opts.edge, Math.min(w, h) * opts.edgeRatio));
+}
+
+/** قوة الإزاحة: تتناسب مع حجم العنصر بدل قيمة ثابتة تسحق الأزرار الصغيرة */
+function displacementScale(w, h, opts) {
+  return Math.min(opts.scale, Math.min(w, h) * opts.scaleRatio);
+}
+
 /**
  * يبني خريطة الإزاحة ويعيدها كـ data URL.
  * القناة R = الإزاحة الأفقية، G = الرأسية (0.5 = بلا إزاحة).
@@ -85,7 +110,7 @@ function buildDisplacementMap(width, height, radius, opts) {
   const halfW = w / 2;
   const halfH = h / 2;
   const r = Math.max(0, Math.min(radius, Math.min(halfW, halfH)));
-  const edge = Math.max(1, Math.min(opts.edge, Math.min(halfW, halfH)));
+  const edge = edgeWidth(w, h, opts);
 
   const canvas = document.createElement('canvas');
   canvas.width = w;
@@ -119,9 +144,9 @@ function buildDisplacementMap(width, height, radius, opts) {
           sdRoundRect(px, py - EPS, halfW, halfH, r);
         const len = Math.hypot(gx, gy) || 1;
 
-        // 1 عند الحافة تمامًا، 0 عند العمق edge
+        // 1 عند الحافة تمامًا، 0 عند العمق edge — بانتقال ناعم بلا انكسار مفاجئ
         const t = clamp01(1 + d / edge);
-        const amount = Math.pow(t, opts.falloff);
+        const amount = smoothstep(Math.pow(t, opts.falloff));
 
         // الانكسار يسحب العيّنة نحو الداخل فتتكوّن عدسة عند الأطراف
         dx = (-gx / len) * amount;
@@ -152,15 +177,28 @@ function createFilter(id, href, w, h, scale) {
   filter.setAttribute('height', '100%');
   filter.setAttribute('color-interpolation-filters', 'sRGB');
 
+  // أرضية محايدة (0.5, 0.5) تغطي كامل منطقة المرشح: أي بكسل خارج حدود الخريطة
+  // يبقى بلا إزاحة بدل أن يُقرأ صفرًا فيُزيح الخلفية ويترك أثرًا مستطيلًا.
+  const feFlood = document.createElementNS(NS, 'feFlood');
+  feFlood.setAttribute('flood-color', 'rgb(128,128,128)');
+  feFlood.setAttribute('flood-opacity', '1');
+  feFlood.setAttribute('result', 'neutral');
+
   const feImage = document.createElementNS(NS, 'feImage');
   feImage.setAttribute('x', '0');
   feImage.setAttribute('y', '0');
   feImage.setAttribute('width', String(w));
   feImage.setAttribute('height', String(h));
   feImage.setAttribute('preserveAspectRatio', 'none');
-  feImage.setAttribute('result', 'map');
+  feImage.setAttribute('result', 'raw');
   feImage.setAttribute('href', href);
   feImage.setAttributeNS(XLINK, 'xlink:href', href);
+
+  const feMerge = document.createElementNS(NS, 'feComposite');
+  feMerge.setAttribute('in', 'raw');
+  feMerge.setAttribute('in2', 'neutral');
+  feMerge.setAttribute('operator', 'over');
+  feMerge.setAttribute('result', 'map');
 
   const feDisp = document.createElementNS(NS, 'feDisplacementMap');
   feDisp.setAttribute('in', 'SourceGraphic');
@@ -169,18 +207,34 @@ function createFilter(id, href, w, h, scale) {
   feDisp.setAttribute('xChannelSelector', 'R');
   feDisp.setAttribute('yChannelSelector', 'G');
 
-  filter.append(feImage, feDisp);
+  filter.append(feFlood, feImage, feMerge, feDisp);
   return filter;
 }
 
-function readRadius(el, rect) {
+function readRadius(el, w, h) {
   const raw = getComputedStyle(el).borderTopLeftRadius || '0';
   const value = parseFloat(raw);
 
   if (Number.isNaN(value)) return 0;
-  if (raw.includes('%')) return (value / 100) * Math.min(rect.width, rect.height);
+  if (raw.includes('%')) return (value / 100) * Math.min(w, h);
 
   return value;
+}
+
+/**
+ * أبعاد صندوق الحدود بوحدات CSS **قبل** التكبير (zoom).
+ * getBoundingClientRect تُرجع أبعادًا مُكبَّرة، بينما فضاء إحداثيات مرشح SVG
+ * يستعمل الصندوق غير المُكبَّر؛ الخلط بينهما يجعل الخريطة أصغر من العنصر
+ * فتظهر حافّة حادّة عند طرفها.
+ */
+function boxSize(el) {
+  const w = el.offsetWidth;
+  const h = el.offsetHeight;
+
+  if (w && h) return { w, h };
+
+  const rect = el.getBoundingClientRect();
+  return { w: Math.round(rect.width), h: Math.round(rect.height) };
 }
 
 /* --------------------------------- التطبيق -------------------------------- */
@@ -194,19 +248,23 @@ function applyTo(el, options) {
   let lastKey = '';
 
   const render = () => {
-    const rect = el.getBoundingClientRect();
-    if (rect.width < 2 || rect.height < 2) return;
+    const { w, h } = boxSize(el);
+    if (w < 2 || h < 2) return;
 
-    const w = Math.round(rect.width);
-    const h = Math.round(rect.height);
-    const radius = readRadius(el, rect);
+    // العناصر الصغيرة تبقى على تمويه CSS (انظر minSize أعلاه)
+    if (Math.min(w, h) < opts.minSize) {
+      el.dataset.liquidApplied = 'fallback';
+      return;
+    }
+
+    const radius = readRadius(el, w, h);
     const key = `${w}x${h}x${Math.round(radius)}`;
 
     if (key === lastKey) return;
     lastKey = key;
 
     const href = buildDisplacementMap(w, h, radius, opts);
-    const next = createFilter(id, href, w, h, opts.scale);
+    const next = createFilter(id, href, w, h, displacementScale(w, h, opts));
 
     if (filterEl) filterEl.replaceWith(next);
     else host.appendChild(next);
@@ -216,6 +274,7 @@ function applyTo(el, options) {
     const value = `url(#${id}) blur(${opts.blur}px) saturate(${opts.saturate})`;
     el.style.backdropFilter = value;
     el.style.webkitBackdropFilter = value;
+    el.dataset.liquidApplied = 'true';
   };
 
   render();
