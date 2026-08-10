@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070402" />
+    <title>La Hint — الملف الشخصي</title>
+    <meta
+      name="description"
+      content="شاشة الملف الشخصي لمقهى La Hint بواجهة عربية وهوية بصرية مستوحاة من نخيل القصيم"
+    />
+
+    <link rel="icon" href="/assets/images/palm-mark.svg" type="image/svg+xml" />
+
+    <!-- الخط العربي IBM Plex Sans Arabic يُحمَّل محليًا من src/main.js -->
+  </head>
+
+  <body>
+    <div class="phone">
+      <div class="screen" id="screen">
+        <!-- ================= الواجهة العلوية (الفيديو) ================= -->
+        <header class="hero">
+          <video
+            class="hero-video"
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260707_003042_3d2380a6-1ce6-4407-a2e2-cfec46546407.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+          ></video>
+
+          <div class="hero-fade" aria-hidden="true"></div>
+
+          <div class="topbar">
+            <button
+              class="glass circle btn-edit"
+              type="button"
+              data-liquid
+              aria-label="تعديل الملف"
+            >
+              <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+                <path
+                  d="M4 20.5h4.06L19.6 8.96a1.5 1.5 0 0 0 0-2.12l-2.44-2.44a1.5 1.5 0 0 0-2.12 0L3.5 15.94V20.5H4Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m13.6 6 4.4 4.4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+
+            <button
+              class="glass circle btn-close"
+              type="button"
+              data-liquid
+              aria-label="إغلاق"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path
+                  d="M6 6 18 18M18 6 6 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- ================= الهوية ================= -->
+        <section class="identity">
+          <img
+            class="frond frond-right"
+            src="/assets/images/palm-frond-right.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="frond frond-left"
+            src="/assets/images/palm-frond-left.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <h1 class="name" lang="en" dir="ltr">La Hint</h1>
+          <p class="subtitle">لاتيه البرقوق بارفيه</p>
+        </section>
+
+        <!-- ================= الإنجازات ================= -->
+        <div class="achievements-wrap">
+          <button class="glass pill achievements" type="button" data-liquid>
+            <img
+              class="ach-icon"
+              src="/assets/images/icon-trophy.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <span class="ach-text">١٢ إنجازًا</span>
+          </button>
+        </div>
+
+        <!-- ================= شبكة الإحصائيات ================= -->
+        <section class="stats" aria-label="الإحصائيات">
+          <article class="stat-card card">
+            <img
+              class="stat-img"
+              src="https://polo-pecan-73837341.figma.site/_assets/v11/a8ba62db54d1e331b7beb36d69308e9b92516b99.png"
+              alt="قهوة"
+              width="84"
+              height="84"
+            />
+            <div class="stat-num">١٥٤</div>
+            <div class="stat-label">مشروبًا تم شربه</div>
+          </article>
+
+          <article class="stat-card card">
+            <img
+              class="stat-img"
+              src="https://polo-pecan-73837341.figma.site/_assets/v11/953600065119f54f64ab9edb076b3cbb289fcff8.png"
+              alt="ساندويتش"
+              width="84"
+              height="84"
+            />
+            <div class="stat-num">٣٦</div>
+            <div class="stat-label">ساندويتش تم أكله</div>
+          </article>
+
+          <article class="stat-card card">
+            <img
+              class="stat-img"
+              src="https://polo-pecan-73837341.figma.site/_assets/v11/aef68e05f729a30ed177f74c2cece578c05bfdba.png"
+              alt="مقهى"
+              width="84"
+              height="84"
+            />
+            <div class="stat-num">١٢</div>
+            <div class="stat-label">مقهى تمت زيارته</div>
+          </article>
+        </section>
+
+        <!-- ================= المفضل ================= -->
+        <section class="favorite card" aria-label="المشروب المفضل">
+          <img
+            class="fav-img"
+            src="https://polo-pecan-73837341.figma.site/_assets/v11/976a811111808abc50be33c2483872dbdb6ad5a8.png"
+            alt="لاتيه"
+            width="108"
+            height="108"
+          />
+          <div class="fav-text">
+            <div class="fav-kicker">المفضل</div>
+            <div class="fav-title">لاتيه</div>
+            <div class="fav-meta">طُلب ٧٣ مرة</div>
+          </div>
+          <button
+            class="glass circle fav-shuffle"
+            type="button"
+            data-liquid
+            aria-label="اقترح مشروبًا آخر"
+          >
+            <img
+              class="shuffle-icon"
+              src="/assets/images/icon-shuffle.svg"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </section>
+
+        <!-- ================= بطاقة تالية (تلميح للتمرير) ================= -->
+        <div class="next-card card" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
