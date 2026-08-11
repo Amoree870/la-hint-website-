@@ -32,6 +32,10 @@
 
 > جميع اللوحات والمبالغ والمزايدين بيانات تجريبية للعرض فقط (في `src/auction/data.js`).
 
+**نسخة الملف الواحد:** `npm run build:single` ينتج `dist/auction-single.html` — ملف
+HTML واحد مدمج فيه كل شيء (الأنماط والسكربت والخطوط كـ `data:` URI)، يُفتح مباشرة
+من الجوال أو يُرفع على أي مستضيف ثابت بلا إعداد.
+
 **الملفات:** `auction.html` · `src/auction/main.js` (المنطق) ·
 `src/auction/plate.js` (رسم اللوحة) · `src/auction/data.js` (البيانات) ·
 `src/auction/style.css` (الأنماط)
