@@ -1116,6 +1116,29 @@ main {
 .toast.warn { border-inline-start: 3px solid var(--warn); }
 .toast.err { border-inline-start: 3px solid var(--danger); }
 
+/* ===================== المناطق الآمنة على iOS (النوتش) ===================== */
+
+.ticker {
+  height: calc(40px + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+}
+
+.topnav {
+  padding-inline: max(20px, env(safe-area-inset-right), env(safe-area-inset-left));
+}
+
+main {
+  padding-inline: max(20px, env(safe-area-inset-right), env(safe-area-inset-left));
+}
+
+.toasts {
+  bottom: calc(22px + env(safe-area-inset-bottom));
+}
+
+.footer {
+  padding-bottom: calc(42px + env(safe-area-inset-bottom));
+}
+
 /* =============================== الاستجابة =============================== */
 
 @media (max-width: 900px) {
@@ -1130,7 +1153,9 @@ main {
 }
 
 @media (max-width: 560px) {
-  main { padding-inline: 14px; }
+  main {
+    padding-inline: max(14px, env(safe-area-inset-right), env(safe-area-inset-left));
+  }
   .hero-stats { gap: 20px; }
   .hero-stats dd { font-size: 21px; }
   .wallet { display: none; }

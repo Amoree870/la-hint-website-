@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - claude/coffee-profile-mobile-yul9e3
+      - claude/car-plates-auction-site-4ddzvr
   workflow_dispatch:
 
 permissions:
