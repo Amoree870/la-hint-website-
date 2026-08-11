@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#070f12" />
+    <title>مزاد اللوحات — لوحات سيارات مميزة</title>
+    <meta
+      name="description"
+      content="منصة تفاعلية للمزايدة على لوحات السيارات المميزة: مزايدة لحظية، عدّاد تنازلي، وقائمة مفضلة."
+    />
+    <link rel="icon" href="/assets/images/palm-mark.svg" type="image/svg+xml" />
+  </head>
+
+  <body class="auction-page">
+    <!-- ======================= شريط البث المباشر ======================= -->
+    <div class="ticker" aria-live="off">
+      <span class="ticker-badge"><i class="dot"></i> مباشر</span>
+      <div class="ticker-viewport">
+        <div class="ticker-track" id="ticker"></div>
+      </div>
+    </div>
+
+    <!-- ============================ الترويسة ============================ -->
+    <header class="topnav">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M3 8.5h18M6.5 8.5V6.2A2.2 2.2 0 0 1 8.7 4h6.6a2.2 2.2 0 0 1 2.2 2.2v2.3"
+                  fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <rect x="3" y="8.5" width="18" height="11.5" rx="2.4"
+                  fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M8 14h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>مزاد اللوحات</strong>
+          <small>لوحات مميزة</small>
+        </span>
+      </a>
+
+      <nav class="topnav-links" aria-label="روابط">
+        <a href="#grid" class="is-active">المزادات</a>
+        <a href="#grid" data-filter-link="watch">المفضلة</a>
+        <a href="#how">كيف يعمل</a>
+      </nav>
+
+      <div class="topnav-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="تبديل المظهر">
+          <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+            <path class="ico-moon" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"
+                  fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="wallet" title="رصيد المحفظة">
+          <span class="wallet-label">المحفظة</span>
+          <span class="wallet-value" id="walletValue">٥٬٠٠٠٬٠٠٠</span>
+        </div>
+        <div class="avatar" aria-hidden="true">أنت</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================= البطل ============================= -->
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="dot"></i> المزاد الحادي عشر مفتوح الآن</span>
+          <h1>لوحتك المميزة<br /><em>تبدأ بمزايدة واحدة</em></h1>
+          <p class="lede">
+            زايد لحظيًا على لوحات سيارات نادرة، تابع العدّاد التنازلي، واحفظ ما يعجبك
+            في قائمة المفضلة — كل ذلك من مكان واحد.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#grid">تصفّح اللوحات</a>
+            <a class="btn btn-ghost" href="#how">كيف يعمل المزاد؟</a>
+          </div>
+
+          <dl class="hero-stats">
+            <div><dt>لوحة معروضة</dt><dd data-count="248">٠</dd></div>
+            <div><dt>مزايدة اليوم</dt><dd data-count="12940">٠</dd></div>
+            <div><dt>مزايد نشط</dt><dd data-count="3675">٠</dd></div>
+          </dl>
+        </div>
+
+        <!-- لوحة اليوم -->
+        <aside class="spotlight" id="spotlight">
+          <div class="spotlight-head">
+            <span class="chip chip-gold">لوحة اليوم</span>
+            <span class="spotlight-timer" id="spotTimer">--:--:--</span>
+          </div>
+          <div class="spotlight-plate" id="spotPlate"></div>
+          <div class="spotlight-foot">
+            <div>
+              <span class="k">أعلى مزايدة</span>
+              <strong class="spotlight-price" id="spotPrice">٠</strong>
+            </div>
+            <button class="btn btn-primary" type="button" id="spotBid">زايد الآن</button>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ============================ الأدوات ============================ -->
+      <section class="toolbar" id="grid">
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="search"
+            type="search"
+            placeholder="ابحث برقم اللوحة أو الحروف… مثل: ٧٧٧٧ أو أ ب ح"
+            aria-label="بحث في اللوحات"
+          />
+          <button class="search-clear" id="searchClear" type="button" aria-label="مسح البحث" hidden>×</button>
+        </div>
+
+        <div class="chips" id="chips" role="tablist" aria-label="تصفية">
+          <button class="chip is-on" data-filter="all" role="tab">الكل</button>
+          <button class="chip" data-filter="fancy" role="tab">مميزة</button>
+          <button class="chip" data-filter="أحادية" role="tab">أحادية</button>
+          <button class="chip" data-filter="ثنائية" role="tab">ثنائية</button>
+          <button class="chip" data-filter="ثلاثية" role="tab">ثلاثية</button>
+          <button class="chip" data-filter="رباعية" role="tab">رباعية</button>
+          <button class="chip" data-filter="ending" role="tab">تنتهي قريبًا</button>
+          <button class="chip" data-filter="watch" role="tab">
+            المفضلة <span class="chip-count" id="watchCount">٠</span>
+          </button>
+        </div>
+
+        <label class="sort">
+          <span class="sr-only">ترتيب</span>
+          <select id="sort" aria-label="ترتيب النتائج">
+            <option value="ending">الأقرب انتهاءً</option>
+            <option value="price-desc">الأعلى سعرًا</option>
+            <option value="price-asc">الأقل سعرًا</option>
+            <option value="bids">الأكثر مزايدة</option>
+          </select>
+        </label>
+      </section>
+
+      <p class="result-line"><span id="resultCount">٠</span> لوحة مطابقة</p>
+
+      <section class="grid" id="cards" aria-live="polite"></section>
+
+      <p class="empty" id="empty" hidden>
+        لا توجد لوحات مطابقة — جرّب كلمة بحث أخرى أو أزل التصفية.
+      </p>
+
+      <!-- =========================== كيف يعمل =========================== -->
+      <section class="how" id="how">
+        <h2>كيف يعمل المزاد؟</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-n">١</span>
+            <h3>اختر لوحتك</h3>
+            <p>تصفّح اللوحات المعروضة وصفِّها حسب عدد الخانات أو قرب انتهاء الوقت.</p>
+          </li>
+          <li>
+            <span class="step-n">٢</span>
+            <h3>قدّم مزايدتك</h3>
+            <p>زايد بمبلغ يفوق أعلى مزايدة بخطوة المزاد على الأقل، وتابع موقعك لحظيًا.</p>
+          </li>
+          <li>
+            <span class="step-n">٣</span>
+            <h3>تابع العدّاد</h3>
+            <p>أي مزايدة في آخر دقيقتين تمدّد الوقت تلقائيًا لإتاحة فرصة عادلة للجميع.</p>
+          </li>
+          <li>
+            <span class="step-n">٤</span>
+            <h3>استلم اللوحة</h3>
+            <p>عند الفوز تُصدر مسوّغات النقل وتُحوَّل ملكية اللوحة إلى مركبتك.</p>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>مزاد اللوحات — نموذج تجريبي للعرض. جميع اللوحات والمبالغ افتراضية.</p>
+    </footer>
+
+    <!-- ========================== نافذة المزايدة ========================== -->
+    <div class="modal" id="modal" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-x" type="button" data-close aria-label="إغلاق">×</button>
+
+        <h2 class="modal-title" id="modalTitle">تقديم مزايدة</h2>
+        <div class="modal-plate" id="modalPlate"></div>
+
+        <div class="modal-meta">
+          <div><span class="k">أعلى مزايدة</span><strong id="mPrice">٠</strong></div>
+          <div><span class="k">عدد المزايدات</span><strong id="mBids">٠</strong></div>
+          <div><span class="k">الوقت المتبقي</span><strong id="mTime">--:--</strong></div>
+        </div>
+
+        <label class="field">
+          <span>مبلغ مزايدتك (ريال)</span>
+          <input id="bidInput" type="text" inputmode="numeric" autocomplete="off" />
+        </label>
+
+        <div class="quick" id="quick"></div>
+        <p class="hint" id="mHint">الحد الأدنى للمزايدة التالية.</p>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="button" id="confirmBid">تأكيد المزايدة</button>
+          <button class="btn btn-ghost" type="button" data-close>إلغاء</button>
+        </div>
+
+        <div class="history">
+          <h3>سجل المزايدات</h3>
+          <ul id="historyList"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+
+    <script type="module" src="/src/auction/main.js"></script>
+  </body>
+</html>
