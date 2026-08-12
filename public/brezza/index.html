@@ -533,8 +533,14 @@ footer .brand .palm{color:var(--yellow)}
   border-radius:var(--r-md);box-shadow:var(--shadow);transition:.35s var(--ease);
 }
 .contact-item:hover{transform:translateX(-6px);background:var(--yellow)}
-.contact-item .ic{width:46px;height:46px;border-radius:14px;background:var(--pink-mist);display:grid;place-items:center;flex:none}
+.contact-item .ic{width:46px;height:46px;border-radius:14px;background:var(--pink-mist);display:grid;place-items:center;flex:none;transition:.35s var(--ease)}
 .contact-item:hover .ic{background:var(--white)}
+/* شعارات العلامات بألوانها الحقيقية */
+.ic.brand-wa,.contact-item:hover .ic.brand-wa{background:#25D366}
+.ic.brand-ig,.contact-item:hover .ic.brand-ig{
+  background:radial-gradient(circle at 28% 108%,#FDD75B 6%,#F7913C 24%,#EE2A7B 56%,#9537B2 78%,#5B51D8 100%);
+}
+.contact-item:hover .ic.brand-wa,.contact-item:hover .ic.brand-ig{transform:scale(1.08)}
 .contact-item b{display:block;color:var(--plum-deep);font-size:15.5px;font-family:var(--font-display)}
 .contact-item span{font-size:14px;color:var(--muted);direction:ltr;display:block;text-align:start}
 .contact-item:hover span{color:rgba(75,36,52,.75)}
@@ -574,6 +580,13 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
 }
 .socials a:hover{background:var(--yellow);transform:translateY(-4px)}
 .socials a:hover svg{stroke:var(--plum-deep);fill:var(--plum-deep)}
+/* واتساب وإنستقرام يحتفظان بلونيهما */
+.socials a.s-wa{background:#25D366}
+.socials a.s-ig{background:radial-gradient(circle at 28% 108%,#FDD75B 6%,#F7913C 24%,#EE2A7B 56%,#9537B2 78%,#5B51D8 100%)}
+.socials a.s-wa:hover,.socials a.s-ig:hover{transform:translateY(-4px) scale(1.06)}
+.socials a.s-wa:hover svg{fill:#fff;stroke:none}
+.socials a.s-ig:hover svg circle,.socials a.s-ig:hover svg rect{stroke:#fff}
+.socials a.s-ig:hover svg circle[fill]{fill:#fff}
 .f-col h4{color:var(--cream);font-size:19px;margin-bottom:20px}
 .f-col li{margin-bottom:12px}
 .f-col a,.f-col span{color:rgba(251,211,198,.68);font-size:15px;transition:.28s var(--ease)}
@@ -584,13 +597,32 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
 }
 
 /* ============ عائم ============ */
-.float-wa{
-  position:fixed;inset-block-end:24px;inset-inline-start:24px;z-index:110;width:58px;height:58px;
-  border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(37,211,102,.8);
-  transition:.35s var(--ease);
+.floats{
+  position:fixed;inset-block-end:24px;inset-inline-start:24px;z-index:110;
+  display:flex;flex-direction:column;gap:12px;
 }
-.float-wa:hover{transform:scale(1.12) rotate(8deg)}
-.float-wa svg{width:29px;height:29px}
+.float-btn{
+  width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  transition:.35s var(--ease);position:relative;
+}
+.float-btn svg{width:29px;height:29px}
+.float-btn:hover{transform:scale(1.12) rotate(8deg)}
+.float-btn.f-wa{background:#25D366;box-shadow:0 16px 30px -12px rgba(37,211,102,.85)}
+.float-btn.f-ig{
+  background:radial-gradient(circle at 28% 108%,#FDD75B 6%,#F7913C 24%,#EE2A7B 56%,#9537B2 78%,#5B51D8 100%);
+  box-shadow:0 16px 30px -12px rgba(238,42,123,.75);
+}
+/* تلميح باسم الحساب عند المرور */
+.float-btn::after{
+  /* الأزرار مثبّتة على يمين الشاشة، فالتلميح يفتح يسارًا دائمًا (خاصية فيزيائية
+     لأن direction:ltr أدناه يقلب معنى inset-inline-*) */
+  content:attr(data-tip);position:absolute;right:calc(100% + 12px);
+  background:var(--plum-deep);color:var(--cream);padding:7px 14px;border-radius:99px;
+  font-size:13px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;
+  transition:.3s var(--ease);direction:ltr;
+}
+.float-btn:hover::after{opacity:1}
+@media (max-width:760px){.float-btn::after{display:none}}
 .to-top{
   position:fixed;inset-block-end:24px;inset-inline-end:24px;z-index:110;width:48px;height:48px;border-radius:50%;
   background:var(--plum);border:0;cursor:pointer;display:grid;place-items:center;
@@ -1354,16 +1386,16 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       </div>
 
       <div class="contact-list">
-        <a class="contact-item" href="https://wa.me/966500000000" target="_blank" rel="noopener">
-          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="#7B4B5D"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg></span>
-          <div><b>واتساب</b><span>+966 50 000 0000</span></div>
+        <a class="contact-item" href="https://wa.me/966595497479" target="_blank" rel="noopener">
+          <span class="ic brand-wa"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg></span>
+          <div><b>واتساب</b><span>0595497479</span></div>
         </a>
-        <a class="contact-item" href="tel:+966500000000">
+        <a class="contact-item" href="tel:+966595497479">
           <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 3.5h3.2l1.6 4-2 1.4a12 12 0 005.8 5.8l1.4-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6C9.2 20 3.6 14.4 3.4 5.3A1.6 1.6 0 015 3.5z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
-          <div><b>اتصال مباشر</b><span>+966 50 000 0000</span></div>
+          <div><b>اتصال مباشر</b><span>0595497479</span></div>
         </a>
-        <a class="contact-item" href="https://instagram.com/" target="_blank" rel="noopener">
-          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5.4" stroke="#7B4B5D" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke="#7B4B5D" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.3" fill="#7B4B5D"/></svg></span>
+        <a class="contact-item" href="https://instagram.com/brezza.sa" target="_blank" rel="noopener">
+          <span class="ic brand-ig"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.35" fill="#fff"/></svg></span>
           <div><b>إنستقرام</b><span>@brezza.sa</span></div>
         </a>
         <div class="contact-item">
@@ -1457,13 +1489,13 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           وأنت تقدّمه بطريقتك.
         </p>
         <div class="socials">
-          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="إنستقرام">
-            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FBD3C6"><rect x="3" y="3" width="18" height="18" rx="5.4" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.3" fill="#FBD3C6" stroke="none"/></svg>
+          <a class="s-ig" href="https://instagram.com/brezza.sa" target="_blank" rel="noopener" aria-label="إنستقرام @brezza.sa">
+            <svg width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.35" fill="#fff"/></svg>
           </a>
-          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="واتساب">
-            <svg width="21" height="21" viewBox="0 0 24 24" fill="#FBD3C6"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
+          <a class="s-wa" href="https://wa.me/966595497479" target="_blank" rel="noopener" aria-label="واتساب 0595497479">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
           </a>
-          <a href="tel:+966500000000" aria-label="اتصال">
+          <a href="tel:+966595497479" aria-label="اتصال 0595497479">
             <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FBD3C6"><path d="M5 3.5h3.2l1.6 4-2 1.4a12 12 0 005.8 5.8l1.4-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6C9.2 20 3.6 14.4 3.4 5.3A1.6 1.6 0 015 3.5z" stroke-width="1.9" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1485,7 +1517,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
         <ul>
           <li><span>عنيزة — القصيم</span></li>
           <li><span>بريدة — القصيم</span></li>
-          <li><a href="tel:+966500000000" dir="ltr" style="display:inline-block">+966 50 000 0000</a></li>
+          <li><a href="tel:+966595497479" dir="ltr" style="display:inline-block">0595497479</a></li>
           <li><span>يوميًا ٩ص — ١٢م</span></li>
         </ul>
       </div>
@@ -1498,9 +1530,16 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
   </div>
 </footer>
 
-<a class="float-wa" href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
-  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
-</a>
+<div class="floats">
+  <a class="float-btn f-ig" href="https://instagram.com/brezza.sa" target="_blank" rel="noopener"
+     data-tip="@brezza.sa" aria-label="حسابنا على إنستقرام @brezza.sa">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.35" fill="#fff"/></svg>
+  </a>
+  <a class="float-btn f-wa" href="https://wa.me/966595497479" target="_blank" rel="noopener"
+     data-tip="0595497479" aria-label="تواصل عبر واتساب 0595497479">
+    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
+  </a>
+</div>
 
 <button class="to-top" id="toTop" aria-label="العودة للأعلى">
   <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFF8F3"><path d="M12 19V5M5 12l7-7 7 7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1510,8 +1549,10 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
 (function(){
   'use strict';
 
-  /* ===== رقم التواصل — غيّره من هنا فقط ===== */
-  var WHATSAPP = '966500000000';
+  /* ===== بيانات التواصل — غيّرها من هنا فقط ===== */
+  var WHATSAPP  = '966595497479';   /* بصيغة دولية بلا + وبلا صفر */
+  var PHONE     = '+966595497479';
+  var INSTAGRAM = 'brezza.sa';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1693,9 +1734,15 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
   /* ===== سنة الفوتر ===== */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ===== تحديث روابط واتساب من المتغيّر ===== */
+  /* ===== مزامنة كل روابط التواصل مع الثوابت أعلاه ===== */
   document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
     a.href = 'https://wa.me/' + WHATSAPP;
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.href = 'tel:' + PHONE;
+  });
+  document.querySelectorAll('a[href^="https://instagram.com/"]').forEach(function(a){
+    a.href = 'https://instagram.com/' + INSTAGRAM;
   });
 })();
 </script>
