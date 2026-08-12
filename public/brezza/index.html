@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#F5A08B" />
 <title>BREZZA — تأجير كيترنق القهوة والتيراميسو | عنيزة وبريدة</title>
-<meta name="description" content="بريزا — تأجير يومي لعربة كيترنق القهوة وركن التيراميسو لمناسباتك في عنيزة وبريدة. تجهيز كامل، باريستا محترف، وحلا طازج." />
+<meta name="description" content="بريزا — تأجير يومي لمعدات ركن القهوة والتيراميسو في عنيزة وبريدة. نوصّل المعدات والقهوة والحلا جاهزة، وأنت تقدّمها لضيوفك بطريقتك." />
 <meta property="og:title" content="BREZZA — كيترنق قهوة وتيراميسو" />
-<meta property="og:description" content="تأجير يومي لركن قهوة وتيراميسو لمناسباتك في عنيزة وبريدة." />
+<meta property="og:description" content="تأجير يومي لمعدات القهوة والتيراميسو في عنيزة وبريدة." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFD11A'/%3E%3Cpath d='M16 26V14' stroke='%237B4B5D' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 14c-4-4-8-3-9 0 3-1 6 0 9 2zM16 14c4-4 8-3 9 0-3-1-6 0-9 2zM16 13c0-5 3-7 6-6-2 1-3 3-3 6z' fill='%237B4B5D'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -207,6 +207,29 @@ footer .brand .palm{color:var(--yellow)}
 .chip.c3{inset-block-end:6%;inset-inline-start:6%;animation:float 6.4s .3s ease-in-out infinite}
 .chip.c2 i{background:var(--red)}
 .chip.c3 i{background:var(--pink-deep)}
+
+/* ---- دورة صبّ القهوة داخل رسم العربة ---- */
+.pour{
+  transform-box:fill-box;transform-origin:top center;
+  animation:pourAnim 5.2s linear infinite;
+}
+@keyframes pourAnim{
+  0%,6%   {opacity:0;transform:scaleY(.06)}
+  11%,56% {opacity:1;transform:scaleY(1)}
+  62%,100%{opacity:0;transform:scaleY(.06)}
+}
+.coffee-level{animation:fillAnim 5.2s linear infinite}
+@keyframes fillAnim{
+  0%,11%  {transform:translateY(46px)}
+  56%,72% {transform:translateY(2px)}
+  74%,100%{transform:translateY(46px)}
+}
+.cup-grp{animation:cupAnim 5.2s linear infinite}
+@keyframes cupAnim{
+  0%,66%  {opacity:1}
+  73%,84% {opacity:0}
+  91%,100%{opacity:1}
+}
 
 .steam{position:absolute;inset-block-start:6%;inset-inline-start:50%;z-index:3;opacity:.5}
 .steam span{
@@ -616,6 +639,10 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
+  /* صورة ساكنة للعربة: كوب نصف ممتلئ بلا خيط صبّ */
+  .pour{opacity:0}
+  .coffee-level{transform:translateY(20px)}
+  .cup-grp{opacity:1}
 }
 </style>
 </head>
@@ -689,8 +716,8 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       <span class="eyebrow"><i class="dot"></i> متاح للحجز اليومي — عنيزة وبريدة</span>
       <h1>قهوتك <span class="hl">وحلاك</span><br />توصل لمناسبتك جاهزة</h1>
       <p class="lead">
-        نأجّرك ركن قهوة متكامل وركن تيراميسو ليوم واحد… ننزل بعدّتنا، نجهّز، نضيّف ضيوفك،
-        ونرحل ونخلّي المكان مثل ما كان. أنت استقبل ضيوفك — والباقي علينا.
+        نأجّرك معدات ركن القهوة ليوم كامل، ونوصّلها لك مع القهوة والتيراميسو جاهزين.
+        نركّب ونسلّمك كل شي شغّال — وأنت تقدّم لضيوفك بطريقتك وعلى راحتك.
       </p>
       <div class="hero-actions">
         <a href="#book" class="cta-btn yellow">
@@ -709,7 +736,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
               <path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/>
             </svg>
           </span>
-          <div><b>باريستا محترف</b><span>يجهّز أمام ضيوفك</span></div>
+          <div><b>معدات جاهزة</b><span>توصلك مركّبة وشغّالة</span></div>
         </div>
         <div class="hbadge">
           <span class="ic">
@@ -718,7 +745,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
               <path d="M12 7v5.2l3.4 2" stroke="#E5836B" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </span>
-          <div><b>تجهيز بساعة</b><span>قبل بداية المناسبة</span></div>
+          <div><b>نركّب قبل بساعة</b><span>من بداية المناسبة</span></div>
         </div>
         <div class="hbadge">
           <span class="ic">
@@ -750,6 +777,9 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <linearGradient id="ylG" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#FFD93B"/><stop offset="1" stop-color="#F5C000"/>
           </linearGradient>
+          <clipPath id="cupClip">
+            <path d="M114.6 245h26.8l-4.2 43a1.6 1.6 0 0 1-1.6 1.4h-15.2a1.6 1.6 0 0 1-1.6-1.4z"/>
+          </clipPath>
         </defs>
 
         <!-- ظل -->
@@ -792,6 +822,20 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <rect x="118" y="192" width="18" height="30" rx="6" fill="#2B2B2F"/>
           <path d="M127 172c-6 0-9 4-9 8s3 7 9 7 9-3 9-7-3-8-9-8z" fill="none" stroke="#2B2B2F" stroke-width="5"/>
           <rect x="122" y="220" width="10" height="9" rx="3" fill="#1F1F22"/>
+        </g>
+
+        <!-- خيط القهوة النازل -->
+        <rect class="pour" x="125.4" y="228" width="3.4" height="14" rx="1.7" fill="#5C3018"/>
+
+        <!-- الكوب اللي يمتلئ -->
+        <g class="cup-grp">
+          <path d="M113 241h30l-4.6 47a2 2 0 0 1-2 1.8h-16.8a2 2 0 0 1-2-1.8z" fill="#fff"/>
+          <g clip-path="url(#cupClip)">
+            <rect class="coffee-level" x="112" y="245" width="32" height="46" fill="#5C3018"/>
+          </g>
+          <rect x="112" y="240" width="32" height="5" rx="2.5" fill="#E1483C"/>
+          <path d="M113 241h30l-4.6 47a2 2 0 0 1-2 1.8h-16.8a2 2 0 0 1-2-1.8z"
+                fill="none" stroke="#4B2434" stroke-width="1.2" opacity=".22"/>
         </g>
 
         <!-- صينية التنقيط -->
@@ -851,7 +895,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <div class="big">٣ سنوات<small></small></div>
           <div class="lbl">ونحن نقهوي القصيم</div>
           <div class="desc">
-            بدأنا بعربة وحدة وفكرة بسيطة: إن القهوة الحلوة تصير أحلى لمّا تجي لعندك.
+            بدأنا بعربة وحدة وفكرة بسيطة: إن الضيافة الحلوة ما تحتاج ميزانية كبيرة — تحتاج معدات صح ومواد طازجة.
           </div>
         </div>
       </div>
@@ -865,31 +909,31 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       <span class="kicker">من نحن</span>
       <h2>بريزا… نسمة قهوة تجي لك</h2>
       <p class="first">
-        بريزا مشروع سعودي من القصيم، تخصّصنا في شي واحد ونتقنه: نجهّز ركن قهوة وحلا
-        يليق بمناسبتك، ونديره من أول كوب لآخر ضيف.
+        بريزا مشروع سعودي من القصيم، تخصّصنا في شي واحد ونتقنه: نجهّز لك معدات ركن
+        القهوة والحلا، ونوصّلها جاهزة ليوم مناسبتك.
       </p>
       <p>
-        الفكرة بدت لمّا لاحظنا إن أصعب جزء بأي مناسبة مو الترتيب — الضيافة. تحتاج
-        تشتري، تجهّز، تلاقي أحد يصبّ، وبالنهاية تنشغل عن ضيوفك. فقلنا: خلّونا نجي
-        نحن بكل شي جاهز.
+        الفكرة بدت لمّا لاحظنا إن أغلى شي في الضيافة إنك تشتري معدات تستخدمها مرة
+        وحدة وتركنها بعدها. فقلنا: خلّونا نأجّرها لك ليوم واحد، ومعها القهوة والحلا
+        جاهزين — بجزء بسيط من تكلفة الكيترنق الكامل.
       </p>
       <p>
-        اليوم عندنا عربة بريزا بلونها الوردي المميّز، باريستا يعرف شغله، ومطبخ يجهّز
-        التيراميسو طازج بنفس اليوم. ما نأجّر معدّات فقط — نأجّرك راحة بال ليوم كامل.
+        اليوم عندنا عربة بريزا بلونها الوردي المميّز، معدات نظيفة ومجهّزة قبل كل حجز،
+        ومطبخ يحضّر التيراميسو طازج بنفس اليوم. أنت ما عليك إلا التقديم.
       </p>
 
       <ul class="check-list">
         <li>
           <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          نجي بكل العدّة — ما نحتاج منك إلا مكان وكهرباء
+          نوصّل ونركّب — ما نحتاج منك إلا مكان وكهرباء
         </li>
         <li>
           <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          طاقم نسائي متوفر لمناسبات النساء
+          القهوة والحليب والتيراميسو يجون معها جاهزين
         </li>
         <li>
           <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          نطلع والمكان نظيف مثل ما استلمناه
+          نستلم المعدات بعد المناسبة — ما عليك تنظيف
         </li>
         <li>
           <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -906,7 +950,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
     <div class="head center reveal">
       <span class="kicker">خدماتنا</span>
       <h2>إيش نقدر نسوي لمناسبتك؟</h2>
-      <p>خدماتنا كلها بنظام التأجير اليومي — تحجز اليوم اللي تبيه، ونجيك فيه.</p>
+      <p>خدماتنا كلها بنظام التأجير اليومي — نوصّل ونركّب، والتقديم يبقى عليك.</p>
     </div>
 
     <div class="svc-grid">
@@ -921,9 +965,9 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
         </div>
         <h3>كيترنق القهوة اليومي</h3>
         <p>
-          عربة بريزا كاملة تنزل عندك: مكينة إسبريسو احترافية، باريستا يشتغل قدّام ضيوفك،
-          وقائمة مشروبات حارّة وباردة تمشي طول المناسبة. تصبّ لضيوفك بلا انقطاع من أول
-          الحفل لآخره.
+          معدات ركن قهوة كاملة توصلك ليوم واحد: عربة بريزا، مكينة إسبريسو احترافية،
+          طحّانة، وكل أدوات التحضير — ومعها القهوة المختصة والحليب والإضافات بكميات
+          تكفي عدد ضيوفك. نوصّل ونركّب ونشرح لك التشغيل بدقايق.
         </p>
         <div class="tags">
           <span>إسبريسو</span><span>لاتيه</span><span>قهوة سعودية</span><span>آيس أمريكانو</span><span>موهيتو</span>
@@ -942,9 +986,9 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
         </div>
         <h3>ركن التيراميسو</h3>
         <p>
-          تيراميسو نجهّزه بنفس اليوم — لا مجمّد ولا من أمس. أكواب فردية مرتّبة بركن أنيق
-          يناسب صور المناسبة، بطبقات كريمة المسكربوني والقهوة والكاكاو. الحلا اللي
-          يخلّي ضيوفك يسألون: «من وين هذا؟»
+          تيراميسو نحضّره بنفس اليوم — لا مجمّد ولا من أمس. يوصلك بأكواب فردية جاهزة
+          للتقديم، مرتّبة بركن أنيق يناسب صور المناسبة، بطبقات كريمة المسكربوني والقهوة
+          والكاكاو. الحلا اللي يخلّي ضيوفك يسألون: «من وين هذا؟»
         </p>
         <div class="tags">
           <span>كلاسيك</span><span>بستاشيو</span><span>لوتس</span><span>أكواب فردية</span>
@@ -984,8 +1028,8 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
         <h3>باقة مفصّلة على مقاسك</h3>
         <p>
           عدد ضيوفك غير، ووقتك غير، وميزانيتك غير. كلّمنا بعدد الحضور ونوع المناسبة
-          وننسّق لك باقة تناسبك بالضبط — قهوة بس، أو حلا بس، أو الاثنين مع تنسيق كامل
-          للركن.
+          ونجهّز لك باقة تناسبك بالضبط — معدات قهوة بس، أو تيراميسو بس، أو الاثنين مع
+          تنسيق كامل للركن.
         </p>
         <div class="tags">
           <span>نصف يوم</span><span>يوم كامل</span><span>أيام متتالية</span>
@@ -1005,7 +1049,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       </div>
       <div class="incl reveal" data-d="1">
         <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#7B4B5D" stroke-width="1.9"/><path d="M4.5 20a7.5 7.5 0 0115 0" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/></svg></span>
-        <b>باريستا</b><span>معه فريق التقديم</span>
+        <b>قهوة مختصة</b><span>وحليب وإضافات</span>
       </div>
       <div class="incl reveal" data-d="2">
         <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 3h10l-1 18H8L7 3z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/><path d="M7.4 9h9.2" stroke="#E5836B" stroke-width="1.9"/></svg></span>
@@ -1021,7 +1065,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       </div>
       <div class="incl reveal" data-d="5">
         <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 18l4.5-5 3.5 3.6L16 12l4 6" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="4.5" width="18" height="15" rx="3" stroke="#7B4B5D" stroke-width="1.9"/></svg></span>
-        <b>تنظيف بعد الحفل</b><span>نطلع والمكان نظيف</span>
+        <b>استلام بعد المناسبة</b><span>نجي ناخذ المعدات</span>
       </div>
     </div>
   </div>
@@ -1054,7 +1098,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       <div class="step reveal" data-d="3">
         <div class="n">٤</div>
         <h3>يوم المناسبة</h3>
-        <p>نوصل قبل بساعة، نجهّز، نقدّم لضيوفك، وبالنهاية نفكّ ونرتّب ونمشي.</p>
+        <p>نوصل قبل بساعة، نركّب ونتأكد إن كل شي شغّال، وبعد المناسبة نجي نستلم المعدات.</p>
       </div>
     </div>
   </div>
@@ -1075,11 +1119,11 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
         <p class="sub">مناسب للتجمّعات الصغيرة والدواوين</p>
         <div class="price">عرض سعر خلال ساعات</div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> عربة بريزا + مكينة إسبريسو</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> باريستا لمدة الحفل</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> مشروبات حارّة وباردة</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكواب وأدوات التقديم</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> توصيل وتركيب وتنظيف</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> عربة بريزا + مكينة إسبريسو وطحّانة</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> قهوة مختصة وحليب وإضافات</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكواب وأدوات التحضير</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> توصيل وتركيب وشرح التشغيل</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> استلام المعدات بعد المناسبة</li>
         </ul>
         <a href="#book" class="cta-btn ghost" data-pkg="ركن القهوة">اطلب عرض سعر</a>
       </div>
@@ -1087,7 +1131,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       <div class="pk featured reveal" data-d="1">
         <span class="badge">الأكثر طلبًا</span>
         <h3>قهوة + تيراميسو</h3>
-        <p class="sub">الباقة الكاملة — ضيافة من أولها لآخرها</p>
+        <p class="sub">معدات القهوة والحلا مع بعض — الأكمل لمناسبتك</p>
         <div class="price">عرض سعر خلال ساعات</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> كل ما في باقة ركن القهوة</li>
@@ -1107,7 +1151,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكثر من ركن بنفس الوقت</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكواب مطبوعة بشعارك</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> حجز أيام متتالية</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> طاقم نسائي عند الطلب</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> كميات إضافية للمناسبات الكبيرة</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> فاتورة ضريبية للشركات</li>
         </ul>
         <a href="#book" class="cta-btn ghost" data-pkg="باقة مفصّلة">تواصل معنا</a>
@@ -1120,7 +1164,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
 <div class="stats-band">
   <div class="wrap stats-grid">
     <div class="stat reveal"><b data-count="420">0</b><span>مناسبة جهّزناها</span></div>
-    <div class="stat reveal" data-d="1"><b data-count="38000">0</b><span>كوب قدّمناه</span></div>
+    <div class="stat reveal" data-d="1"><b data-count="38000">0</b><span>كوب طلع من معدّاتنا</span></div>
     <div class="stat reveal" data-d="2"><b data-count="2">0</b><span>مدن نغطّيها</span></div>
     <div class="stat reveal" data-d="3"><b data-count="98" data-suffix="%">0</b><span>عملاء يعيدون الحجز</span></div>
   </div>
@@ -1171,8 +1215,8 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
         </div>
-        <p>أكثر شي عجبني إنهم ما تركوا شي علينا. جوا، رتّبوا، قدّموا، ونظّفوا وطلعوا.
-           وأنا بس استقبلت ضيوفي وارتحت.</p>
+        <p>أكثر شي عجبني إنهم دقيقين بالمواعيد. وصّلوا المعدات ورتّبوا الركن وشرحوا
+           التشغيل، وبعد المناسبة جوا استلموا. تجربة مريحة من أولها لآخرها.</p>
         <div class="who"><span class="av">ن</span><div><b>نورة السليمان</b><span>ملكة — عنيزة</span></div></div>
       </div>
     </div>
@@ -1273,7 +1317,7 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
     <div class="faq-list">
       <div class="faq reveal">
         <button class="faq-q">كم أقل مدة للحجز؟ <span class="sign"></span></button>
-        <div class="faq-a"><p>نظامنا يوم واحد كأقل مدة، ويشمل التجهيز والتقديم والتنظيف. وإذا مناسبتك أقصر — مثلًا ٤ ساعات — كلّمنا ونرتّب لك سعر يناسب المدة.</p></div>
+        <div class="faq-a"><p>نظامنا يوم واحد كأقل مدة، ويشمل التوصيل والتركيب واستلام المعدات بعد المناسبة. وإذا مناسبتك أقصر — مثلًا ٤ ساعات — كلّمنا ونرتّب لك سعر يناسب المدة.</p></div>
       </div>
       <div class="faq reveal" data-d="1">
         <button class="faq-q">قبل كم لازم أحجز؟ <span class="sign"></span></button>
@@ -1281,15 +1325,15 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
       </div>
       <div class="faq reveal" data-d="2">
         <button class="faq-q">إيش تحتاجون مني في المكان؟ <span class="sign"></span></button>
-        <div class="faq-a"><p>مساحة تقريبًا ٣×٢ متر ومصدر كهرباء قريب. الباقي كله نجيبه معنا — المكينة، الأدوات، الأكواب، والمواد.</p></div>
+        <div class="faq-a"><p>مساحة تقريبًا ٣×٢ متر ومصدر كهرباء قريب، وشخص من عندك يستلم الشرح ويقدّم للضيوف. الباقي كله نجيبه معنا — المكينة، الأدوات، الأكواب، والمواد.</p></div>
       </div>
       <div class="faq reveal" data-d="3">
-        <button class="faq-q">هل يتوفر طاقم نسائي؟ <span class="sign"></span></button>
-        <div class="faq-a"><p>نعم، عندنا طاقم نسائي لمناسبات النساء. اذكر ذلك عند الحجز عشان نرتّب الجدول من البداية.</p></div>
+        <button class="faq-q">مين يقدّم القهوة للضيوف؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>أنت أو أحد من فريقك. نحن نوفّر المعدات والقهوة والتيراميسو جاهزين، ونشرح لك التشغيل قبل ما نمشي — التقديم يبقى عليك، وهذا بالضبط اللي يخلّي السعر أقل بكثير من الكيترنق بطاقم كامل.</p></div>
       </div>
       <div class="faq reveal" data-d="4">
         <button class="faq-q">التيراميسو يجهّز متى؟ <span class="sign"></span></button>
-        <div class="faq-a"><p>نجهّزه في نفس يوم المناسبة ونوصله مبرّدًا. ما نستخدم مجمّد ولا مجهّز من أيام سابقة — هذي نقطة ما نتنازل عنها.</p></div>
+        <div class="faq-a"><p>نحضّره في نفس يوم المناسبة ونوصله مبرّدًا وجاهزًا للتقديم. ما نستخدم مجمّد ولا محضّر من أيام سابقة — هذي نقطة ما نتنازل عنها.</p></div>
       </div>
       <div class="faq reveal" data-d="5">
         <button class="faq-q">أقدر أطبع شعاري على الأكواب؟ <span class="sign"></span></button>
@@ -1409,8 +1453,8 @@ footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;ma
           <svg class="palm" viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
         </div>
         <p class="f-about">
-          تأجير يومي لركن القهوة والتيراميسو في عنيزة وبريدة. نجي بكل شي جاهز،
-          ونخلّي ضيافتك تتكلّم عنك.
+          تأجير يومي لمعدات القهوة والتيراميسو في عنيزة وبريدة. نوصّل كل شي جاهز،
+          وأنت تقدّمه بطريقتك.
         </p>
         <div class="socials">
           <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="إنستقرام">
