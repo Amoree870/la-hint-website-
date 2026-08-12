@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#F5A08B" />
+<title>BREZZA — تأجير كيترنق القهوة والتيراميسو | عنيزة وبريدة</title>
+<meta name="description" content="بريزا — تأجير يومي لعربة كيترنق القهوة وركن التيراميسو لمناسباتك في عنيزة وبريدة. تجهيز كامل، باريستا محترف، وحلا طازج." />
+<meta property="og:title" content="BREZZA — كيترنق قهوة وتيراميسو" />
+<meta property="og:description" content="تأجير يومي لركن قهوة وتيراميسو لمناسباتك في عنيزة وبريدة." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFD11A'/%3E%3Cpath d='M16 26V14' stroke='%237B4B5D' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M16 14c-4-4-8-3-9 0 3-1 6 0 9 2zM16 14c4-4 8-3 9 0-3-1-6 0-9 2zM16 13c0-5 3-7 6-6-2 1-3 3-3 6z' fill='%237B4B5D'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Baloo+Bhaijaan+2:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+/* =====================================================================
+   BREZZA — الهوية البصرية
+   وردي الخوخ / أصفر شمسي / برقوقي داكن — مستخلصة من عربة بريزا
+   ===================================================================== */
+:root{
+  --pink:#F5A08B;
+  --pink-soft:#FBD3C6;
+  --pink-mist:#FDEAE3;
+  --pink-deep:#E5836B;
+  --yellow:#FFD11A;
+  --yellow-deep:#F0B707;
+  --plum:#7B4B5D;
+  --plum-deep:#4B2434;
+  --cream:#FFF8F3;
+  --white:#fff;
+  --red:#E1483C;
+  --ink:#3A1F2A;
+  --muted:#8B6b76;
+
+  --r-lg:34px;
+  --r-md:24px;
+  --r-sm:16px;
+  --shadow:0 18px 40px -18px rgba(75,36,52,.35);
+  --shadow-lg:0 40px 80px -30px rgba(75,36,52,.45);
+  --wrap:1180px;
+  --ease:cubic-bezier(.22,1,.36,1);
+
+  --font:'Cairo','SF Arabic','Segoe UI',Tahoma,Arial,sans-serif;
+  --font-display:'Baloo Bhaijaan 2','Cairo','SF Arabic',Tahoma,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.85;
+  overflow-x:hidden;
+  font-size:16px;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.3;margin:0;font-weight:800;letter-spacing:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+::selection{background:var(--yellow);color:var(--plum-deep)}
+
+.wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
+.section{padding:clamp(72px,9vw,130px) 0;position:relative}
+
+/* ============ شريط تقدم التمرير ============ */
+#progress{
+  position:fixed;inset-block-start:0;inset-inline-start:0;height:4px;width:0%;
+  background:linear-gradient(90deg,var(--yellow),var(--pink-deep));
+  z-index:200;transition:width .1s linear;border-end-end-radius:4px;
+}
+
+/* ============ الهيدر ============ */
+header.nav{
+  position:fixed;inset-block-start:0;inset-inline:0;z-index:120;
+  padding:18px 0;transition:.4s var(--ease);
+}
+header.nav.scrolled{
+  padding:10px 0;
+  background:rgba(255,248,243,.82);
+  backdrop-filter:blur(18px) saturate(1.4);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 10px 30px -22px rgba(75,36,52,.5);
+}
+.nav-inner{display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand .logo-txt{
+  font-family:var(--font-display);font-weight:800;font-size:26px;letter-spacing:.5px;
+  color:var(--plum);line-height:1;transform:translateY(1px);
+}
+.brand .palm{width:25px;height:28px;flex:none;color:var(--plum)}
+footer .brand .palm{color:var(--yellow)}
+.brand:hover .palm{animation:sway .9s var(--ease)}
+@keyframes sway{0%,100%{transform:rotate(0)}30%{transform:rotate(-11deg)}65%{transform:rotate(7deg)}}
+
+.menu{display:flex;gap:6px;margin-inline-start:auto;align-items:center}
+.menu a{
+  padding:9px 15px;border-radius:99px;font-weight:600;font-size:15px;color:var(--plum);
+  position:relative;transition:.28s var(--ease);white-space:nowrap;
+}
+.menu a::after{
+  content:'';position:absolute;inset-block-end:3px;inset-inline-start:50%;translate:50% 0;
+  width:0;height:3px;border-radius:9px;background:var(--yellow);transition:width .3s var(--ease);
+}
+.menu a:hover{color:var(--plum-deep);background:var(--pink-mist)}
+.menu a.active::after{width:20px}
+
+.cta-btn{
+  display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:99px;
+  background:var(--plum);color:var(--cream);font-weight:700;font-size:15px;border:0;cursor:pointer;
+  transition:.32s var(--ease);box-shadow:0 12px 26px -14px rgba(75,36,52,.9);white-space:nowrap;
+}
+.cta-btn:hover{background:var(--plum-deep);transform:translateY(-3px);box-shadow:0 20px 34px -16px rgba(75,36,52,.85)}
+.cta-btn.yellow{background:var(--yellow);color:var(--plum-deep);box-shadow:0 12px 26px -14px rgba(240,183,7,.95)}
+.cta-btn.yellow:hover{background:var(--yellow-deep)}
+.cta-btn.ghost{background:transparent;color:var(--plum);border:2px solid rgba(123,75,93,.28);box-shadow:none}
+.cta-btn.ghost:hover{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+
+.burger{
+  display:none;width:46px;height:46px;border-radius:14px;border:0;background:var(--plum);
+  cursor:pointer;margin-inline-start:auto;flex:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+}
+.burger span{display:block;width:19px;height:2.2px;background:var(--cream);border-radius:2px;transition:.3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7.2px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.2px) rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:115;background:var(--cream);
+  padding:110px 28px 40px;display:flex;flex-direction:column;gap:6px;
+  transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden;
+}
+.mobile-menu.open{transform:translateY(0);visibility:visible}
+.mobile-menu a{
+  font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--plum);
+  padding:12px 0;border-bottom:1.5px dashed rgba(123,75,93,.18);
+}
+.mobile-menu .cta-btn{
+  margin-top:24px;justify-content:center;font-size:18px;padding:16px;
+  color:var(--cream);border-bottom:0;font-family:var(--font);
+}
+
+/* ============ الواجهة الرئيسية ============ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:130px 0 70px;overflow:hidden;
+  background:
+    radial-gradient(1100px 700px at 88% 6%,rgba(255,209,26,.34),transparent 60%),
+    radial-gradient(900px 700px at 6% 88%,rgba(245,160,139,.45),transparent 62%),
+    linear-gradient(170deg,var(--pink-mist),var(--cream) 62%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center;position:relative;z-index:3;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;background:var(--yellow);color:var(--plum-deep);
+  padding:9px 20px;border-radius:99px;font-weight:700;font-size:14px;margin-bottom:22px;
+  box-shadow:0 10px 24px -14px rgba(240,183,7,1);
+}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.45);opacity:.55}}
+
+.hero h1{
+  font-size:clamp(40px,6.4vw,80px);color:var(--plum-deep);margin-bottom:22px;line-height:1.18;
+}
+.hero h1 .hl{position:relative;display:inline-block;color:var(--pink-deep)}
+.hero h1 .hl::after{
+  content:'';position:absolute;inset-inline:-.12em;inset-block-end:.03em;height:.17em;z-index:-1;
+  background:var(--yellow);border-radius:8px;transform:scaleX(0);transform-origin:right;
+  animation:hl .9s .7s var(--ease) forwards;
+}
+@keyframes hl{to{transform:scaleX(1)}}
+.hero p.lead{font-size:clamp(16.5px,2vw,20px);color:var(--muted);max-width:52ch;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+
+.hero-badges{display:flex;gap:26px;flex-wrap:wrap}
+.hbadge{display:flex;align-items:center;gap:11px}
+.hbadge .ic{
+  width:44px;height:44px;border-radius:14px;background:var(--white);display:grid;place-items:center;
+  box-shadow:var(--shadow);flex:none;
+}
+.hbadge b{display:block;font-family:var(--font-display);font-size:19px;color:var(--plum-deep);line-height:1.2}
+.hbadge span{font-size:13.5px;color:var(--muted)}
+
+/* عربة بريزا */
+.cart-stage{position:relative;display:grid;place-items:center;perspective:1200px}
+.cart-stage .glow{
+  position:absolute;width:78%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,209,26,.55),transparent 66%);filter:blur(24px);
+}
+.cart-svg{width:min(100%,440px);position:relative;z-index:2;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(-.7deg)}}
+
+.chip{
+  position:absolute;z-index:4;background:var(--white);border-radius:99px;padding:10px 18px;
+  box-shadow:var(--shadow-lg);font-weight:700;font-size:14px;color:var(--plum-deep);
+  display:flex;align-items:center;gap:8px;white-space:nowrap;
+}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--yellow);flex:none}
+.chip.c1{inset-block-start:12%;inset-inline-start:-4%;animation:float 5s ease-in-out infinite}
+.chip.c2{inset-block-end:22%;inset-inline-end:-2%;animation:float 5.6s .7s ease-in-out infinite}
+.chip.c3{inset-block-end:6%;inset-inline-start:6%;animation:float 6.4s .3s ease-in-out infinite}
+.chip.c2 i{background:var(--red)}
+.chip.c3 i{background:var(--pink-deep)}
+
+.steam{position:absolute;inset-block-start:6%;inset-inline-start:50%;z-index:3;opacity:.5}
+.steam span{
+  display:block;position:absolute;width:9px;height:9px;border-radius:50%;background:var(--white);
+  animation:steam 3.4s ease-in infinite;
+}
+.steam span:nth-child(2){inset-inline-start:20px;animation-delay:.8s}
+.steam span:nth-child(3){inset-inline-start:-18px;animation-delay:1.6s}
+@keyframes steam{
+  0%{transform:translateY(0) scale(.5);opacity:0}
+  25%{opacity:.8}
+  100%{transform:translateY(-90px) scale(1.9);opacity:0}
+}
+
+.hero-blob{position:absolute;border-radius:50%;filter:blur(60px);z-index:1}
+.hero-blob.b1{width:420px;height:420px;background:rgba(255,209,26,.35);inset-block-start:-90px;inset-inline-end:-60px}
+.hero-blob.b2{width:360px;height:360px;background:rgba(245,160,139,.4);inset-block-end:-100px;inset-inline-start:-80px}
+
+.scroll-cue{
+  position:absolute;inset-block-end:26px;inset-inline-start:50%;translate:50% 0;z-index:4;
+  display:grid;place-items:center;gap:7px;color:var(--muted);font-size:12.5px;font-weight:600;
+}
+.scroll-cue .mouse{
+  width:24px;height:38px;border:2px solid rgba(123,75,93,.35);border-radius:14px;position:relative;
+}
+.scroll-cue .mouse::after{
+  content:'';position:absolute;inset-block-start:7px;inset-inline-start:50%;translate:-50% 0;
+  width:4px;height:7px;border-radius:3px;background:var(--plum);animation:wheel 1.7s infinite;
+}
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+/* ============ الشريط المتحرك ============ */
+.ticker{background:var(--plum);padding:17px 0;overflow:hidden;position:relative;z-index:5}
+.ticker-track{display:flex;gap:38px;width:max-content;animation:slide 26s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(50%)}}
+.ticker-item{
+  display:flex;align-items:center;gap:38px;color:var(--pink-soft);
+  font-family:var(--font-display);font-size:19px;font-weight:700;white-space:nowrap;
+}
+.ticker-item svg{width:19px;height:22px;flex:none;color:var(--yellow)}
+
+/* ============ عناوين الأقسام ============ */
+.head{max-width:640px;margin-bottom:56px}
+.head.center{margin-inline:auto;text-align:center}
+.kicker{
+  display:inline-block;color:var(--pink-deep);font-weight:700;font-size:14px;letter-spacing:.5px;
+  margin-bottom:12px;position:relative;padding-inline-start:34px;
+}
+.kicker::before{
+  content:'';position:absolute;inset-inline-start:0;inset-block-start:50%;translate:0 -50%;
+  width:26px;height:3px;border-radius:3px;background:var(--yellow);
+}
+.head.center .kicker{padding:0}
+.head.center .kicker::before{display:none}
+.head h2{font-size:clamp(30px,4.4vw,50px);color:var(--plum-deep);margin-bottom:16px}
+.head p{color:var(--muted);font-size:17px}
+
+/* ============ من نحن ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,5vw,72px);align-items:center}
+.about-visual{position:relative}
+.about-card{
+  background:var(--white);border-radius:var(--r-lg);padding:36px;box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.about-card::before{
+  content:'';position:absolute;inset-block-start:-70px;inset-inline-end:-70px;width:200px;height:200px;
+  border-radius:50%;background:var(--pink-mist);
+}
+.about-card .in{position:relative}
+.about-card .big{
+  font-family:var(--font-display);font-size:clamp(52px,7vw,78px);color:var(--pink-deep);line-height:1;
+}
+.about-card .big small{font-size:.42em;color:var(--muted);font-weight:700}
+.about-card .lbl{font-weight:700;color:var(--plum-deep);margin-top:6px;font-size:18px}
+.about-card .desc{color:var(--muted);font-size:15px;margin-top:6px}
+
+.mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.mini{
+  background:var(--yellow);border-radius:var(--r-md);padding:24px;box-shadow:var(--shadow);
+  transition:.35s var(--ease);
+}
+.mini:nth-child(2){background:var(--pink)}
+.mini:hover{transform:translateY(-7px) rotate(-1.4deg)}
+.mini b{display:block;font-family:var(--font-display);font-size:30px;color:var(--plum-deep);line-height:1.1}
+.mini span{font-size:14px;color:rgba(75,36,52,.72);font-weight:600}
+
+.about-text p{color:var(--muted);font-size:17px;margin-bottom:18px}
+.about-text p.first{font-size:19.5px;color:var(--ink);font-weight:600}
+.check-list{display:grid;gap:14px;margin-top:26px}
+.check-list li{display:flex;align-items:flex-start;gap:13px;font-weight:600;color:var(--plum-deep);font-size:16px}
+.check-list .tick{
+  width:26px;height:26px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;
+  flex:none;margin-top:5px;
+}
+.check-list .tick svg{width:13px;height:13px}
+
+/* ============ الخدمات ============ */
+.services{background:linear-gradient(180deg,var(--cream),var(--pink-mist) 55%,var(--cream))}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+@media (max-width:820px){.svc-grid{grid-template-columns:1fr}}
+.svc{
+  background:var(--white);border-radius:var(--r-lg);padding:38px 32px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);transition:.45s var(--ease);border:1.5px solid rgba(245,160,139,.2);
+  transform-style:preserve-3d;
+}
+.svc::after{
+  content:'';position:absolute;inset-block-start:0;inset-inline:0;height:5px;
+  background:linear-gradient(90deg,var(--yellow),var(--pink-deep));
+  transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease);
+}
+.svc:hover{transform:translateY(-12px);box-shadow:var(--shadow-lg);border-color:transparent}
+.svc:hover::after{transform:scaleX(1)}
+.svc .ic-box{
+  width:70px;height:70px;border-radius:22px;background:var(--pink-mist);display:grid;place-items:center;
+  margin-bottom:24px;transition:.45s var(--ease);
+}
+.svc:hover .ic-box{background:var(--yellow);transform:rotate(-8deg) scale(1.08)}
+.svc .ic-box svg{width:36px;height:36px}
+.svc h3{font-size:25px;color:var(--plum-deep);margin-bottom:12px}
+.svc p{color:var(--muted);font-size:15.5px;margin-bottom:20px}
+.svc .tags{display:flex;flex-wrap:wrap;gap:8px}
+.svc .tags span{
+  background:var(--pink-mist);color:var(--plum);padding:6px 13px;border-radius:99px;
+  font-size:13px;font-weight:600;
+}
+.svc .num{
+  position:absolute;inset-block-start:24px;inset-inline-end:32px;font-family:var(--font-display);
+  font-size:62px;color:rgba(245,160,139,.2);line-height:1;pointer-events:none;
+}
+
+/* ============ ما يشمله التجهيز ============ */
+.incl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.incl{
+  background:var(--white);border-radius:var(--r-md);padding:26px 22px;text-align:center;
+  box-shadow:var(--shadow);transition:.4s var(--ease);border:1.5px solid transparent;
+}
+.incl:hover{border-color:var(--yellow);transform:translateY(-6px)}
+.incl .em{
+  width:54px;height:54px;margin:0 auto 14px;border-radius:18px;background:var(--pink-mist);
+  display:grid;place-items:center;
+}
+.incl:hover .em{background:var(--yellow)}
+.incl b{display:block;color:var(--plum-deep);font-family:var(--font-display);font-size:17px}
+.incl span{font-size:13.5px;color:var(--muted)}
+
+/* ============ آلية العمل ============ */
+.steps{background:var(--plum-deep);color:var(--pink-soft);position:relative;overflow:hidden}
+.steps::before{
+  content:'';position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,160,139,.22),transparent 68%);
+  inset-block-start:-200px;inset-inline-start:-160px;
+}
+.steps .head h2{color:var(--cream)}
+.steps .head p{color:rgba(251,211,198,.72)}
+.steps .kicker{color:var(--yellow)}
+.step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;position:relative}
+.step{
+  background:rgba(255,255,255,.055);border:1.5px solid rgba(251,211,198,.16);border-radius:var(--r-md);
+  padding:32px 26px;transition:.4s var(--ease);backdrop-filter:blur(6px);
+}
+.step:hover{background:rgba(255,255,255,.1);transform:translateY(-8px);border-color:var(--yellow)}
+.step .n{
+  width:52px;height:52px;border-radius:50%;background:var(--yellow);color:var(--plum-deep);
+  display:grid;place-items:center;font-family:var(--font-display);font-size:23px;margin-bottom:20px;
+}
+.step h3{font-size:21px;color:var(--cream);margin-bottom:9px}
+.step p{color:rgba(251,211,198,.72);font-size:15px}
+
+/* ============ الباقات ============ */
+.pk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;align-items:stretch}
+.pk{
+  background:var(--white);border-radius:var(--r-lg);padding:36px 30px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;position:relative;transition:.45s var(--ease);
+  border:2px solid transparent;
+}
+.pk:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+.pk.featured{background:linear-gradient(165deg,var(--pink),var(--pink-deep));color:var(--cream);border-color:var(--yellow)}
+.pk .badge{
+  position:absolute;inset-block-start:-14px;inset-inline-start:50%;translate:50% 0;background:var(--yellow);
+  color:var(--plum-deep);padding:6px 20px;border-radius:99px;font-size:13px;font-weight:800;white-space:nowrap;
+  box-shadow:0 10px 22px -12px rgba(240,183,7,1);
+}
+.pk h3{font-size:26px;color:var(--plum-deep);margin-bottom:6px}
+.pk.featured h3{color:var(--white)}
+.pk .sub{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+.pk.featured .sub{color:rgba(255,255,255,.85)}
+.pk .price{
+  font-family:var(--font-display);font-size:20px;color:var(--pink-deep);margin-bottom:22px;
+  padding-bottom:22px;border-bottom:1.5px dashed rgba(123,75,93,.2);
+}
+.pk.featured .price{color:var(--yellow);border-color:rgba(255,255,255,.28)}
+.pk ul{display:grid;gap:12px;margin-bottom:28px;flex:1}
+.pk li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--muted)}
+.pk.featured li{color:rgba(255,255,255,.92)}
+.pk li svg{width:17px;height:17px;flex:none;margin-top:6px}
+.pk .cta-btn{justify-content:center;width:100%}
+
+/* ============ الأرقام ============ */
+.stats-band{background:var(--yellow);padding:64px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:30px;text-align:center}
+.stat b{
+  display:block;font-family:var(--font-display);font-size:clamp(38px,5.4vw,58px);
+  color:var(--plum-deep);line-height:1;
+}
+.stat span{font-weight:700;color:rgba(75,36,52,.72);font-size:15px}
+
+/* ============ آراء ============ */
+.tst-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.tst{
+  background:var(--white);border-radius:var(--r-lg);padding:34px 30px;box-shadow:var(--shadow);
+  position:relative;transition:.4s var(--ease);
+}
+.tst:hover{transform:translateY(-8px) rotate(-.6deg)}
+.tst .q{
+  font-family:var(--font-display);font-size:64px;color:var(--pink-soft);line-height:.6;
+  margin-bottom:8px;display:block;
+}
+.tst p{color:var(--ink);font-size:16px;margin-bottom:22px}
+.tst .who{display:flex;align-items:center;gap:13px}
+.tst .av{
+  width:46px;height:46px;border-radius:50%;background:var(--pink);display:grid;place-items:center;
+  font-family:var(--font-display);color:var(--white);font-size:19px;flex:none;
+}
+.tst .who b{display:block;color:var(--plum-deep);font-size:15.5px}
+.tst .who span{font-size:13px;color:var(--muted)}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.stars svg{width:16px;height:16px}
+
+/* ============ موقعنا ============ */
+.loc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:26px}
+.loc{
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);background:var(--white);
+  transition:.45s var(--ease);
+}
+.loc:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+.loc-top{
+  height:180px;position:relative;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(150deg,var(--pink),var(--pink-deep));
+}
+.loc:nth-child(2) .loc-top{background:linear-gradient(150deg,var(--yellow),var(--yellow-deep))}
+.loc-top .ring{
+  position:absolute;border:2px solid rgba(255,255,255,.35);border-radius:50%;
+  width:120px;height:120px;animation:ripple 3s ease-out infinite;
+}
+.loc-top .ring:nth-child(2){animation-delay:1s}
+.loc-top .ring:nth-child(3){animation-delay:2s}
+@keyframes ripple{0%{transform:scale(.5);opacity:.9}100%{transform:scale(2.1);opacity:0}}
+.loc-top .pin{position:relative;z-index:2;width:56px;height:56px;filter:drop-shadow(0 8px 14px rgba(75,36,52,.3))}
+.loc-body{padding:28px 30px 32px}
+.loc-body h3{font-size:26px;color:var(--plum-deep);margin-bottom:6px}
+.loc-body .region{font-size:14px;color:var(--pink-deep);font-weight:700;margin-bottom:16px}
+.loc-body p{color:var(--muted);font-size:15px;margin-bottom:20px}
+.loc-meta{display:grid;gap:10px;margin-bottom:22px}
+.loc-meta div{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--plum)}
+.loc-meta svg{width:17px;height:17px;flex:none}
+.loc .cta-btn{width:100%;justify-content:center}
+
+.coverage{
+  margin-top:36px;background:var(--white);border-radius:var(--r-lg);padding:32px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:var(--shadow);
+  border-inline-start:6px solid var(--yellow);
+}
+.coverage .ic{width:56px;height:56px;border-radius:18px;background:var(--pink-mist);display:grid;place-items:center;flex:none}
+.coverage .tx{flex:1;min-width:240px}
+.coverage h4{font-size:20px;color:var(--plum-deep);margin-bottom:5px}
+.coverage p{color:var(--muted);font-size:15px}
+
+/* ============ الأسئلة ============ */
+.faq-list{display:grid;gap:14px;max-width:840px;margin-inline:auto}
+.faq{
+  background:var(--white);border-radius:var(--r-md);box-shadow:var(--shadow);overflow:hidden;
+  border:1.5px solid transparent;transition:.35s var(--ease);
+}
+.faq.open{border-color:var(--yellow)}
+.faq-q{
+  width:100%;background:none;border:0;text-align:start;padding:24px 28px;cursor:pointer;
+  display:flex;align-items:center;gap:16px;font-family:var(--font-display);font-size:18px;
+  color:var(--plum-deep);font-weight:700;
+}
+.faq-q .sign{
+  width:32px;height:32px;border-radius:50%;background:var(--pink-mist);display:grid;place-items:center;
+  flex:none;margin-inline-start:auto;transition:.35s var(--ease);position:relative;
+}
+.faq.open .faq-q .sign{background:var(--yellow);transform:rotate(135deg)}
+.faq-q .sign::before,.faq-q .sign::after{
+  content:'';position:absolute;background:var(--plum-deep);border-radius:2px;
+}
+.faq-q .sign::before{width:13px;height:2.4px}
+.faq-q .sign::after{width:2.4px;height:13px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.faq-a p{padding:0 28px 26px;color:var(--muted);font-size:15.5px}
+
+/* ============ الحجز ============ */
+.book{background:linear-gradient(160deg,var(--pink-mist),var(--cream))}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,4vw,60px);align-items:start}
+.book-side .head{margin-bottom:32px}
+.contact-list{display:grid;gap:16px}
+.contact-item{
+  display:flex;align-items:center;gap:15px;background:var(--white);padding:18px 22px;
+  border-radius:var(--r-md);box-shadow:var(--shadow);transition:.35s var(--ease);
+}
+.contact-item:hover{transform:translateX(-6px);background:var(--yellow)}
+.contact-item .ic{width:46px;height:46px;border-radius:14px;background:var(--pink-mist);display:grid;place-items:center;flex:none}
+.contact-item:hover .ic{background:var(--white)}
+.contact-item b{display:block;color:var(--plum-deep);font-size:15.5px;font-family:var(--font-display)}
+.contact-item span{font-size:14px;color:var(--muted);direction:ltr;display:block;text-align:start}
+.contact-item:hover span{color:rgba(75,36,52,.75)}
+
+form.booking{background:var(--white);border-radius:var(--r-lg);padding:clamp(26px,3.4vw,42px);box-shadow:var(--shadow-lg)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;color:var(--plum-deep);font-size:14.5px;margin-bottom:8px}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 18px;border-radius:var(--r-sm);border:1.8px solid rgba(123,75,93,.16);
+  background:var(--cream);transition:.3s var(--ease);font-size:15px;outline:none;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--pink-deep);background:var(--white);box-shadow:0 0 0 4px rgba(245,160,139,.18);
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(139,107,118,.6)}
+.chip-pick{display:flex;gap:9px;flex-wrap:wrap}
+.chip-pick input{position:absolute;opacity:0;pointer-events:none}
+.chip-pick label{
+  padding:10px 18px;border-radius:99px;background:var(--cream);border:1.8px solid rgba(123,75,93,.16);
+  cursor:pointer;font-size:14px;font-weight:600;margin:0;transition:.28s var(--ease);color:var(--plum);
+}
+.chip-pick input:checked + label{background:var(--yellow);border-color:var(--yellow);color:var(--plum-deep)}
+form.booking .cta-btn{width:100%;justify-content:center;margin-top:8px;padding:17px;font-size:17px}
+.form-note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+
+/* ============ الفوتر ============ */
+footer{background:var(--plum-deep);color:var(--pink-soft);padding:70px 0 0;position:relative}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:50px}
+footer .brand .logo-txt{color:var(--cream)}
+footer .f-about{color:rgba(251,211,198,.68);font-size:15px;margin:18px 0 24px;max-width:38ch}
+.socials{display:flex;gap:10px}
+.socials a{
+  width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.08);display:grid;place-items:center;
+  transition:.35s var(--ease);
+}
+.socials a:hover{background:var(--yellow);transform:translateY(-4px)}
+.socials a:hover svg{stroke:var(--plum-deep);fill:var(--plum-deep)}
+.f-col h4{color:var(--cream);font-size:19px;margin-bottom:20px}
+.f-col li{margin-bottom:12px}
+.f-col a,.f-col span{color:rgba(251,211,198,.68);font-size:15px;transition:.28s var(--ease)}
+.f-col a:hover{color:var(--yellow);padding-inline-start:6px}
+.f-bottom{
+  border-top:1.5px solid rgba(251,211,198,.13);padding:24px 0;display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;font-size:14px;color:rgba(251,211,198,.55);
+}
+
+/* ============ عائم ============ */
+.float-wa{
+  position:fixed;inset-block-end:24px;inset-inline-start:24px;z-index:110;width:58px;height:58px;
+  border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(37,211,102,.8);
+  transition:.35s var(--ease);
+}
+.float-wa:hover{transform:scale(1.12) rotate(8deg)}
+.float-wa svg{width:29px;height:29px}
+.to-top{
+  position:fixed;inset-block-end:24px;inset-inline-end:24px;z-index:110;width:48px;height:48px;border-radius:50%;
+  background:var(--plum);border:0;cursor:pointer;display:grid;place-items:center;
+  opacity:0;pointer-events:none;transition:.35s var(--ease);box-shadow:var(--shadow);
+}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--yellow)}
+.to-top:hover svg{stroke:var(--plum-deep)}
+
+/* ============ حركة الظهور ============ */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.1s}
+.reveal[data-d="2"]{transition-delay:.2s}
+.reveal[data-d="3"]{transition-delay:.3s}
+.reveal[data-d="4"]{transition-delay:.4s}
+.reveal[data-d="5"]{transition-delay:.5s}
+
+/* ============ استجابة ============ */
+@media (max-width:1000px){
+  .hero-grid,.about-grid,.book-grid{grid-template-columns:1fr}
+  .hero{text-align:center;min-height:auto}
+  .hero .lead{margin-inline:auto}
+  .hero-actions,.hero-badges{justify-content:center}
+  .cart-stage{order:-1;margin-bottom:24px}
+  .cart-svg{width:min(100%,340px)}
+  .head{margin-inline:auto;text-align:center}
+  .head .kicker{padding:0}
+  .head .kicker::before{display:none}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .scroll-cue{display:none}
+}
+@media (max-width:760px){
+  .menu{display:none}
+  .nav-inner > .cta-btn{display:none}
+  .burger{display:flex}
+  .f-grid{grid-template-columns:1fr;gap:34px}
+  .f-row{grid-template-columns:1fr}
+  .chip{font-size:12.5px;padding:8px 14px}
+  .chip.c1{inset-inline-start:0}
+  .chip.c2{inset-inline-end:0}
+  .coverage{flex-direction:column;align-items:flex-start;text-align:start}
+  .about-card{padding:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- رمز النخلة — يُستخدم في كل الموقع عبر <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="palm" viewBox="0 0 32 36">
+    <path d="M16 34C15.3 27 15.4 20.5 16 14.6" stroke="currentColor" stroke-width="3.1"
+          fill="none" stroke-linecap="round"/>
+    <g fill="currentColor">
+      <path d="M16.2 14.6C10.8 9.8 5 8.6.6 11.8c4.8-1 10 1 14.2 5.6z"/>
+      <path d="M15.8 14.6c5.4-4.8 11.2-6 15.6-2.8-4.8-1-10 1-14.2 5.6z"/>
+      <path d="M15.4 13.8C12 7.8 8 4.4 3.2 4.2c4.2 2.6 7.8 6.6 10.6 11.6z"/>
+      <path d="M16.6 13.8c3.4-6 7.4-9.4 12.2-9.6-4.2 2.6-7.8 6.6-10.6 11.6z"/>
+      <path d="M16 13.2c-1.9-5.8-1.5-10.2.2-13.2 1.8 3.2 2.4 7.6 1.4 13.2z"/>
+    </g>
+  </symbol>
+</svg>
+
+<div id="progress"></div>
+
+<!-- ============================= الهيدر ============================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="بريزا — الصفحة الرئيسية">
+      <span class="logo-txt">BREZZA</span>
+      <svg class="palm" viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="#about">من نحن</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#how">كيف نشتغل</a>
+      <a href="#packages">الباقات</a>
+      <a href="#locations">موقعنا</a>
+      <a href="#faq">أسئلة شائعة</a>
+    </nav>
+
+    <a href="#book" class="cta-btn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.9"/>
+        <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+      احجز يومك
+    </a>
+
+    <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">من نحن</a>
+  <a href="#services">خدماتنا</a>
+  <a href="#how">كيف نشتغل</a>
+  <a href="#packages">الباقات</a>
+  <a href="#locations">موقعنا</a>
+  <a href="#faq">أسئلة شائعة</a>
+  <a href="#book" class="cta-btn">احجز يومك الآن</a>
+</div>
+
+<!-- ============================= الواجهة ============================= -->
+<section class="hero" id="top">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="dot"></i> متاح للحجز اليومي — عنيزة وبريدة</span>
+      <h1>قهوتك <span class="hl">وحلاك</span><br />توصل لمناسبتك جاهزة</h1>
+      <p class="lead">
+        نأجّرك ركن قهوة متكامل وركن تيراميسو ليوم واحد… ننزل بعدّتنا، نجهّز، نضيّف ضيوفك،
+        ونرحل ونخلّي المكان مثل ما كان. أنت استقبل ضيوفك — والباقي علينا.
+      </p>
+      <div class="hero-actions">
+        <a href="#book" class="cta-btn yellow">
+          احجز تاريخك
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M14 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#services" class="cta-btn ghost">شوف خدماتنا</a>
+      </div>
+
+      <div class="hero-badges">
+        <div class="hbadge">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/>
+            </svg>
+          </span>
+          <div><b>باريستا محترف</b><span>يجهّز أمام ضيوفك</span></div>
+        </div>
+        <div class="hbadge">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="#E5836B" stroke-width="2"/>
+              <path d="M12 7v5.2l3.4 2" stroke="#E5836B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div><b>تجهيز بساعة</b><span>قبل بداية المناسبة</span></div>
+        </div>
+        <div class="hbadge">
+          <span class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s-7-4.6-7-10a7 7 0 1114 0c0 5.4-7 10-7 10z" stroke="#7B4B5D" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="12" cy="11" r="2.6" fill="#7B4B5D"/>
+            </svg>
+          </span>
+          <div><b>القصيم</b><span>عنيزة · بريدة</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- عربة بريزا -->
+    <div class="cart-stage" id="cartStage">
+      <div class="glow"></div>
+
+      <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <span class="chip c1"><i></i> تجهيز كامل</span>
+      <span class="chip c2"><i></i> تيراميسو طازج</span>
+      <span class="chip c3"><i></i> حجز يومي</span>
+
+      <svg class="cart-svg" viewBox="0 0 340 420" role="img" aria-label="عربة بريزا للقهوة">
+        <defs>
+          <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F8B5A2"/><stop offset="1" stop-color="#F09A82"/>
+          </linearGradient>
+          <linearGradient id="ylG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFD93B"/><stop offset="1" stop-color="#F5C000"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ظل -->
+        <ellipse cx="165" cy="404" rx="128" ry="14" fill="#4B2434" opacity=".13"/>
+
+        <!-- موزّع الأكواب الجانبي -->
+        <g>
+          <rect x="252" y="150" width="62" height="150" rx="24" fill="url(#ylG)"/>
+          <rect x="264" y="162" width="38" height="126" rx="16" fill="#EBAF00" opacity=".55"/>
+          <g>
+            <rect x="271" y="172" width="24" height="108" rx="7" fill="#fff"/>
+            <g fill="#E1483C" opacity=".9">
+              <rect x="274" y="178" width="2.6" height="20" rx="1.3"/>
+              <rect x="280" y="178" width="2.6" height="20" rx="1.3"/>
+              <rect x="286" y="178" width="2.6" height="20" rx="1.3"/>
+              <rect x="291" y="178" width="2.6" height="20" rx="1.3"/>
+            </g>
+            <g stroke="#E9D9D2" stroke-width="1.6">
+              <path d="M271 210h24M271 222h24M271 234h24M271 246h24M271 258h24M271 270h24"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- الجسم -->
+        <rect x="26" y="44" width="228" height="340" rx="12" fill="url(#bodyG)"/>
+
+        <!-- اللوحة الصفراء + الشعار -->
+        <rect x="42" y="60" width="196" height="58" rx="7" fill="url(#ylG)"/>
+        <text x="118" y="100" text-anchor="middle" font-family="'Baloo Bhaijaan 2','Cairo',sans-serif"
+              font-size="36" font-weight="800" fill="#7B4B5D" letter-spacing="1">BREZZA</text>
+        <use href="#palm" x="0" y="0" width="42" height="47" transform="translate(184,58)" color="#7B4B5D"/>
+
+        <!-- التجويف -->
+        <rect x="42" y="128" width="196" height="152" rx="6" fill="#E7907A"/>
+        <rect x="42" y="128" width="196" height="152" rx="6" fill="#4B2434" opacity=".08"/>
+
+        <!-- الصنبور -->
+        <g>
+          <rect x="132" y="176" width="9" height="46" rx="3" fill="#C9CDD2"/>
+          <rect x="118" y="192" width="18" height="30" rx="6" fill="#2B2B2F"/>
+          <path d="M127 172c-6 0-9 4-9 8s3 7 9 7 9-3 9-7-3-8-9-8z" fill="none" stroke="#2B2B2F" stroke-width="5"/>
+          <rect x="122" y="220" width="10" height="9" rx="3" fill="#1F1F22"/>
+        </g>
+
+        <!-- صينية التنقيط -->
+        <g fill="#4B2434" opacity=".26">
+          <circle cx="62" cy="292" r="2.4"/><circle cx="84" cy="292" r="2.4"/><circle cx="106" cy="292" r="2.4"/>
+          <circle cx="128" cy="292" r="2.4"/><circle cx="150" cy="292" r="2.4"/><circle cx="172" cy="292" r="2.4"/>
+          <circle cx="194" cy="292" r="2.4"/><circle cx="216" cy="292" r="2.4"/>
+          <circle cx="73" cy="304" r="2.4"/><circle cx="95" cy="304" r="2.4"/><circle cx="117" cy="304" r="2.4"/>
+          <circle cx="139" cy="304" r="2.4"/><circle cx="161" cy="304" r="2.4"/><circle cx="183" cy="304" r="2.4"/>
+          <circle cx="205" cy="304" r="2.4"/>
+        </g>
+
+        <!-- الدرج -->
+        <rect x="30" y="314" width="220" height="70" rx="10" fill="#F6AE99"/>
+        <rect x="30" y="314" width="220" height="70" rx="10" fill="#fff" opacity=".14"/>
+        <g>
+          <rect x="96" y="344" width="88" height="6" rx="3" fill="#C9CDD2"/>
+          <circle cx="96" cy="347" r="7" fill="#DCE0E4"/>
+          <circle cx="184" cy="347" r="7" fill="#DCE0E4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="mouse"></span>
+    <span>مرّر للأسفل</span>
+  </div>
+</section>
+
+<!-- ============================= الشريط ============================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item">
+      <span>كيترنق قهوة</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>ركن تيراميسو</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>تخرّج · ملكة · افتتاح</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>عنيزة · بريدة</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>حجز يومي</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+    </div>
+    <div class="ticker-item">
+      <span>كيترنق قهوة</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>ركن تيراميسو</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>تخرّج · ملكة · افتتاح</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>عنيزة · بريدة</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+      <span>حجز يومي</span><svg viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= من نحن ============================= -->
+<section class="section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="in">
+          <div class="big">٣ سنوات<small></small></div>
+          <div class="lbl">ونحن نقهوي القصيم</div>
+          <div class="desc">
+            بدأنا بعربة وحدة وفكرة بسيطة: إن القهوة الحلوة تصير أحلى لمّا تجي لعندك.
+          </div>
+        </div>
+      </div>
+      <div class="mini-cards">
+        <div class="mini"><b>يوم واحد</b><span>أقل مدة حجز</span></div>
+        <div class="mini"><b>٦٠ دقيقة</b><span>وقت التجهيز</span></div>
+      </div>
+    </div>
+
+    <div class="about-text reveal" data-d="1">
+      <span class="kicker">من نحن</span>
+      <h2>بريزا… نسمة قهوة تجي لك</h2>
+      <p class="first">
+        بريزا مشروع سعودي من القصيم، تخصّصنا في شي واحد ونتقنه: نجهّز ركن قهوة وحلا
+        يليق بمناسبتك، ونديره من أول كوب لآخر ضيف.
+      </p>
+      <p>
+        الفكرة بدت لمّا لاحظنا إن أصعب جزء بأي مناسبة مو الترتيب — الضيافة. تحتاج
+        تشتري، تجهّز، تلاقي أحد يصبّ، وبالنهاية تنشغل عن ضيوفك. فقلنا: خلّونا نجي
+        نحن بكل شي جاهز.
+      </p>
+      <p>
+        اليوم عندنا عربة بريزا بلونها الوردي المميّز، باريستا يعرف شغله، ومطبخ يجهّز
+        التيراميسو طازج بنفس اليوم. ما نأجّر معدّات فقط — نأجّرك راحة بال ليوم كامل.
+      </p>
+
+      <ul class="check-list">
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          نجي بكل العدّة — ما نحتاج منك إلا مكان وكهرباء
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          طاقم نسائي متوفر لمناسبات النساء
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          نطلع والمكان نظيف مثل ما استلمناه
+        </li>
+        <li>
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4B2434" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          نقدر نطبع شعارك أو اسم المناسبة على الأكواب
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= الخدمات ============================= -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">خدماتنا</span>
+      <h2>إيش نقدر نسوي لمناسبتك؟</h2>
+      <p>خدماتنا كلها بنظام التأجير اليومي — تحجز اليوم اللي تبيه، ونجيك فيه.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="num">01</span>
+        <div class="ic-box">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 9h13v6a5 5 0 01-5 5H9a5 5 0 01-5-5V9z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/>
+            <path d="M17 10h1.6a2.4 2.4 0 010 4.8H17" stroke="#7B4B5D" stroke-width="1.9"/>
+            <path d="M8 2.5c-1 1.4-1 2.4 0 3.6M12 2.5c-1 1.4-1 2.4 0 3.6" stroke="#E5836B" stroke-width="1.9" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>كيترنق القهوة اليومي</h3>
+        <p>
+          عربة بريزا كاملة تنزل عندك: مكينة إسبريسو احترافية، باريستا يشتغل قدّام ضيوفك،
+          وقائمة مشروبات حارّة وباردة تمشي طول المناسبة. تصبّ لضيوفك بلا انقطاع من أول
+          الحفل لآخره.
+        </p>
+        <div class="tags">
+          <span>إسبريسو</span><span>لاتيه</span><span>قهوة سعودية</span><span>آيس أمريكانو</span><span>موهيتو</span>
+        </div>
+      </article>
+
+      <article class="svc reveal" data-d="1">
+        <span class="num">02</span>
+        <div class="ic-box">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 8h16l-1.2 11.2A2 2 0 0116.8 21H7.2a2 2 0 01-2-1.8L4 8z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/>
+            <path d="M4.6 12h14.8" stroke="#E5836B" stroke-width="1.9"/>
+            <path d="M7 8c0-2.8 2.2-4.6 5-4.6S17 5.2 17 8" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/>
+            <circle cx="9.5" cy="15.6" r="1" fill="#E5836B"/><circle cx="13" cy="17.4" r="1" fill="#E5836B"/>
+          </svg>
+        </div>
+        <h3>ركن التيراميسو</h3>
+        <p>
+          تيراميسو نجهّزه بنفس اليوم — لا مجمّد ولا من أمس. أكواب فردية مرتّبة بركن أنيق
+          يناسب صور المناسبة، بطبقات كريمة المسكربوني والقهوة والكاكاو. الحلا اللي
+          يخلّي ضيوفك يسألون: «من وين هذا؟»
+        </p>
+        <div class="tags">
+          <span>كلاسيك</span><span>بستاشيو</span><span>لوتس</span><span>أكواب فردية</span>
+        </div>
+      </article>
+
+      <article class="svc reveal" data-d="2">
+        <span class="num">03</span>
+        <div class="ic-box">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 20V9.5L12 4l9 5.5V20" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/>
+            <path d="M3 20h18" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/>
+            <path d="M9.5 20v-5.5h5V20" stroke="#E5836B" stroke-width="1.9" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>تجهيز المناسبات الخاصة</h3>
+        <p>
+          تخرّج، ملكة، مولود، افتتاح محل، أو يوم موظفين في شركتك — نفصّل الركن على ذوق
+          المناسبة: ألوان تتماشى مع الديكور، أكواب بشعارك، ولوحة ترحيب باسم صاحب
+          المناسبة.
+        </p>
+        <div class="tags">
+          <span>تخرّج</span><span>ملكة</span><span>افتتاحات</span><span>مناسبات الشركات</span>
+        </div>
+      </article>
+
+      <article class="svc reveal" data-d="3">
+        <span class="num">04</span>
+        <div class="ic-box">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="14" rx="3" stroke="#7B4B5D" stroke-width="1.9"/>
+            <path d="M3 11h18" stroke="#7B4B5D" stroke-width="1.9"/>
+            <path d="M8 3.5v4M16 3.5v4" stroke="#E5836B" stroke-width="1.9" stroke-linecap="round"/>
+            <path d="M8.6 15.5l2 2 4-4" stroke="#E5836B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>باقة مفصّلة على مقاسك</h3>
+        <p>
+          عدد ضيوفك غير، ووقتك غير، وميزانيتك غير. كلّمنا بعدد الحضور ونوع المناسبة
+          وننسّق لك باقة تناسبك بالضبط — قهوة بس، أو حلا بس، أو الاثنين مع تنسيق كامل
+          للركن.
+        </p>
+        <div class="tags">
+          <span>نصف يوم</span><span>يوم كامل</span><span>أيام متتالية</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- ما يشمله التجهيز -->
+    <div class="head center reveal" style="margin-top:80px">
+      <span class="kicker">شامل الحجز</span>
+      <h2>كل هذا يجي مع الباقة</h2>
+    </div>
+    <div class="incl-grid">
+      <div class="incl reveal">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 9h13v6a5 5 0 01-5 5H9a5 5 0 01-5-5V9z" stroke="#7B4B5D" stroke-width="1.9"/><path d="M17 10h1.6a2.4 2.4 0 010 4.8H17" stroke="#7B4B5D" stroke-width="1.9"/></svg></span>
+        <b>مكينة احترافية</b><span>إسبريسو + طحّانة</span>
+      </div>
+      <div class="incl reveal" data-d="1">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#7B4B5D" stroke-width="1.9"/><path d="M4.5 20a7.5 7.5 0 0115 0" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+        <b>باريستا</b><span>معه فريق التقديم</span>
+      </div>
+      <div class="incl reveal" data-d="2">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 3h10l-1 18H8L7 3z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/><path d="M7.4 9h9.2" stroke="#E5836B" stroke-width="1.9"/></svg></span>
+        <b>أكواب وأدوات</b><span>بهوية بريزا</span>
+      </div>
+      <div class="incl reveal" data-d="3">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="3" stroke="#7B4B5D" stroke-width="1.9"/><path d="M8 7V5.5A2.5 2.5 0 0110.5 3h3A2.5 2.5 0 0116 5.5V7" stroke="#E5836B" stroke-width="1.9"/></svg></span>
+        <b>توصيل وتركيب</b><span>داخل عنيزة وبريدة</span>
+      </div>
+      <div class="incl reveal" data-d="4">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 5.2 5.6.7-4.2 3.9 1.1 5.6L12 15.6 7.1 18.4l1.1-5.6L4 8.9l5.6-.7z" stroke="#7B4B5D" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <b>تنسيق الركن</b><span>ورود ولوحة ترحيب</span>
+      </div>
+      <div class="incl reveal" data-d="5">
+        <span class="em"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 18l4.5-5 3.5 3.6L16 12l4 6" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="4.5" width="18" height="15" rx="3" stroke="#7B4B5D" stroke-width="1.9"/></svg></span>
+        <b>تنظيف بعد الحفل</b><span>نطلع والمكان نظيف</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= كيف نشتغل ============================= -->
+<section class="section steps" id="how">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">آلية العمل</span>
+      <h2>من أول رسالة… لآخر كوب</h2>
+      <p>أربع خطوات بس، وما عليك شي بعدها.</p>
+    </div>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="n">١</div>
+        <h3>كلّمنا</h3>
+        <p>ارسل لنا على واتساب: تاريخ المناسبة، المدينة، وعدد الضيوف تقريبًا.</p>
+      </div>
+      <div class="step reveal" data-d="1">
+        <div class="n">٢</div>
+        <h3>نرسل لك العرض</h3>
+        <p>خلال ساعات نرجع لك بباقة واضحة — إيش تشمل وكم مدتها وكم تكلفتها.</p>
+      </div>
+      <div class="step reveal" data-d="2">
+        <div class="n">٣</div>
+        <h3>نثبّت التاريخ</h3>
+        <p>عربون بسيط ونقفل اليوم باسمك، ونتفق على وقت الوصول ومكان الركن.</p>
+      </div>
+      <div class="step reveal" data-d="3">
+        <div class="n">٤</div>
+        <h3>يوم المناسبة</h3>
+        <p>نوصل قبل بساعة، نجهّز، نقدّم لضيوفك، وبالنهاية نفكّ ونرتّب ونمشي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= الباقات ============================= -->
+<section class="section" id="packages">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">الباقات</span>
+      <h2>اختر اللي يناسب مناسبتك</h2>
+      <p>كل الباقات بنظام التأجير اليومي، والأسعار تتحدّد حسب عدد الضيوف والمدة.</p>
+    </div>
+
+    <div class="pk-grid">
+      <div class="pk reveal">
+        <h3>ركن القهوة</h3>
+        <p class="sub">مناسب للتجمّعات الصغيرة والدواوين</p>
+        <div class="price">عرض سعر خلال ساعات</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> عربة بريزا + مكينة إسبريسو</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> باريستا لمدة الحفل</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> مشروبات حارّة وباردة</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكواب وأدوات التقديم</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> توصيل وتركيب وتنظيف</li>
+        </ul>
+        <a href="#book" class="cta-btn ghost" data-pkg="ركن القهوة">اطلب عرض سعر</a>
+      </div>
+
+      <div class="pk featured reveal" data-d="1">
+        <span class="badge">الأكثر طلبًا</span>
+        <h3>قهوة + تيراميسو</h3>
+        <p class="sub">الباقة الكاملة — ضيافة من أولها لآخرها</p>
+        <div class="price">عرض سعر خلال ساعات</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> كل ما في باقة ركن القهوة</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> ركن تيراميسو بأكواب فردية</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> ٣ نكهات تختارها</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> تنسيق الركن وورود</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FFD11A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> لوحة ترحيب باسم المناسبة</li>
+        </ul>
+        <a href="#book" class="cta-btn yellow" data-pkg="قهوة + تيراميسو">احجز الباقة</a>
+      </div>
+
+      <div class="pk reveal" data-d="2">
+        <h3>باقة مفصّلة</h3>
+        <p class="sub">للمناسبات الكبيرة والشركات</p>
+        <div class="price">نتفصّل على طلبك</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكثر من ركن بنفس الوقت</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> أكواب مطبوعة بشعارك</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> حجز أيام متتالية</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> طاقم نسائي عند الطلب</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#E5836B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> فاتورة ضريبية للشركات</li>
+        </ul>
+        <a href="#book" class="cta-btn ghost" data-pkg="باقة مفصّلة">تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= الأرقام ============================= -->
+<div class="stats-band">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><b data-count="420">0</b><span>مناسبة جهّزناها</span></div>
+    <div class="stat reveal" data-d="1"><b data-count="38000">0</b><span>كوب قدّمناه</span></div>
+    <div class="stat reveal" data-d="2"><b data-count="2">0</b><span>مدن نغطّيها</span></div>
+    <div class="stat reveal" data-d="3"><b data-count="98" data-suffix="%">0</b><span>عملاء يعيدون الحجز</span></div>
+  </div>
+</div>
+
+<!-- ============================= آراء ============================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">قالوا عنّا</span>
+      <h2>آراء وصلتنا بعد المناسبة</h2>
+    </div>
+    <div class="tst-grid">
+      <div class="tst reveal">
+        <span class="q">”</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+        </div>
+        <p>حجزناهم لحفل تخرّج بنتي في عنيزة. وصلوا قبل الوقت، والركن طلع أحلى من الصور،
+           والضيوف ما فكّوا عن القهوة. التيراميسو خلص أول ساعة!</p>
+        <div class="who"><span class="av">أ</span><div><b>أم عبدالله</b><span>حفل تخرّج — عنيزة</span></div></div>
+      </div>
+
+      <div class="tst reveal" data-d="1">
+        <span class="q">”</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+        </div>
+        <p>جهّزوا لنا افتتاح الفرع الجديد في بريدة. التنسيق كان احترافي، والأكواب عليها
+           شعارنا — الناس صوّرت ونشرت، وصار الافتتاح دعاية بنفسه.</p>
+        <div class="who"><span class="av">م</span><div><b>محمد الحربي</b><span>افتتاح محل — بريدة</span></div></div>
+      </div>
+
+      <div class="tst reveal" data-d="2">
+        <span class="q">”</span>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.4l6.1-.8z" fill="#FFD11A"/></svg>
+        </div>
+        <p>أكثر شي عجبني إنهم ما تركوا شي علينا. جوا، رتّبوا، قدّموا، ونظّفوا وطلعوا.
+           وأنا بس استقبلت ضيوفي وارتحت.</p>
+        <div class="who"><span class="av">ن</span><div><b>نورة السليمان</b><span>ملكة — عنيزة</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= موقعنا ============================= -->
+<section class="section services" id="locations">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">موقعنا</span>
+      <h2>وين تلقانا؟</h2>
+      <p>حاليًا نغطّي مدينتين في القصيم، ونوصل لأي مناسبة داخل نطاقهما.</p>
+    </div>
+
+    <div class="loc-grid">
+      <article class="loc reveal">
+        <div class="loc-top">
+          <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          <svg class="pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 22s-7.5-5.2-7.5-11.2a7.5 7.5 0 1115 0C19.5 16.8 12 22 12 22z" fill="#fff"/>
+            <circle cx="12" cy="10.6" r="3.1" fill="#E5836B"/>
+          </svg>
+        </div>
+        <div class="loc-body">
+          <h3>عنيزة</h3>
+          <div class="region">منطقة القصيم — المقر الرئيسي</div>
+          <p>من هنا انطلقت بريزا. نغطّي أحياء عنيزة كاملة والاستراحات المحيطة بها.</p>
+          <div class="loc-meta">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#7B4B5D" stroke-width="1.9"/><path d="M12 7v5.2l3.4 2" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/></svg>
+              يوميًا ٩ صباحًا — ١٢ منتصف الليل
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4z" stroke="#7B4B5D" stroke-width="1.9"/><path d="M4 8l8 6 8-6" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/></svg>
+              حجز مسبق قبل ٣ أيام على الأقل
+            </div>
+          </div>
+          <a class="cta-btn ghost" href="https://maps.google.com/?q=%D8%B9%D9%86%D9%8A%D8%B2%D8%A9+%D8%A7%D9%84%D9%82%D8%B5%D9%8A%D9%85" target="_blank" rel="noopener">
+            افتح الموقع بالخرائط
+          </a>
+        </div>
+      </article>
+
+      <article class="loc reveal" data-d="1">
+        <div class="loc-top">
+          <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          <svg class="pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 22s-7.5-5.2-7.5-11.2a7.5 7.5 0 1115 0C19.5 16.8 12 22 12 22z" fill="#fff"/>
+            <circle cx="12" cy="10.6" r="3.1" fill="#F0B707"/>
+          </svg>
+        </div>
+        <div class="loc-body">
+          <h3>بريدة</h3>
+          <div class="region">منطقة القصيم — فرع التشغيل</div>
+          <p>نخدم مناسبات بريدة وقاعات الأفراح والمقرات التجارية داخل المدينة.</p>
+          <div class="loc-meta">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#7B4B5D" stroke-width="1.9"/><path d="M12 7v5.2l3.4 2" stroke="#7B4B5D" stroke-width="1.9" stroke-linecap="round"/></svg>
+              يوميًا ٩ صباحًا — ١٢ منتصف الليل
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4z" stroke="#7B4B5D" stroke-width="1.9"/><path d="M4 8l8 6 8-6" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/></svg>
+              حجز مسبق قبل ٣ أيام على الأقل
+            </div>
+          </div>
+          <a class="cta-btn ghost" href="https://maps.google.com/?q=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9+%D8%A7%D9%84%D9%82%D8%B5%D9%8A%D9%85" target="_blank" rel="noopener">
+            افتح الموقع بالخرائط
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <div class="coverage reveal">
+      <span class="ic">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3C9.4 5.6 9.4 18.4 12 21" stroke="#7B4B5D" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="9" stroke="#7B4B5D" stroke-width="1.9"/>
+        </svg>
+      </span>
+      <div class="tx">
+        <h4>مناسبتك خارج عنيزة وبريدة؟</h4>
+        <p>ندرس الطلبات في باقي مدن القصيم حسب المسافة وحجم المناسبة — كلّمنا ونشوف.</p>
+      </div>
+      <a href="#book" class="cta-btn">اسأل عن التغطية</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= الأسئلة ============================= -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="kicker">أسئلة شائعة</span>
+      <h2>أكثر شي يسألوننا عنه</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq reveal">
+        <button class="faq-q">كم أقل مدة للحجز؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>نظامنا يوم واحد كأقل مدة، ويشمل التجهيز والتقديم والتنظيف. وإذا مناسبتك أقصر — مثلًا ٤ ساعات — كلّمنا ونرتّب لك سعر يناسب المدة.</p></div>
+      </div>
+      <div class="faq reveal" data-d="1">
+        <button class="faq-q">قبل كم لازم أحجز؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>يفضّل من ٣ إلى ٧ أيام قبل المناسبة عشان نضمن لك التاريخ والتجهيز. في المواسم (التخرّج والأعياد) الحجوزات تمتلئ بسرعة، فبكّر قدر ما تقدر.</p></div>
+      </div>
+      <div class="faq reveal" data-d="2">
+        <button class="faq-q">إيش تحتاجون مني في المكان؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>مساحة تقريبًا ٣×٢ متر ومصدر كهرباء قريب. الباقي كله نجيبه معنا — المكينة، الأدوات، الأكواب، والمواد.</p></div>
+      </div>
+      <div class="faq reveal" data-d="3">
+        <button class="faq-q">هل يتوفر طاقم نسائي؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>نعم، عندنا طاقم نسائي لمناسبات النساء. اذكر ذلك عند الحجز عشان نرتّب الجدول من البداية.</p></div>
+      </div>
+      <div class="faq reveal" data-d="4">
+        <button class="faq-q">التيراميسو يجهّز متى؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>نجهّزه في نفس يوم المناسبة ونوصله مبرّدًا. ما نستخدم مجمّد ولا مجهّز من أيام سابقة — هذي نقطة ما نتنازل عنها.</p></div>
+      </div>
+      <div class="faq reveal" data-d="5">
+        <button class="faq-q">أقدر أطبع شعاري على الأكواب؟ <span class="sign"></span></button>
+        <div class="faq-a"><p>أكيد. نطبع شعارك أو اسم المناسبة على الأكواب والستاندات، ويحتاج طلب مسبق قبل أسبوع تقريبًا عشان وقت الطباعة.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= الحجز ============================= -->
+<section class="section book" id="book">
+  <div class="wrap book-grid">
+    <div class="book-side reveal">
+      <div class="head">
+        <span class="kicker">احجز</span>
+        <h2>خلّنا نجهّز مناسبتك</h2>
+        <p>عبّي النموذج ويوصلنا طلبك على واتساب مباشرة، أو كلّمنا على طول.</p>
+      </div>
+
+      <div class="contact-list">
+        <a class="contact-item" href="https://wa.me/966500000000" target="_blank" rel="noopener">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="#7B4B5D"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg></span>
+          <div><b>واتساب</b><span>+966 50 000 0000</span></div>
+        </a>
+        <a class="contact-item" href="tel:+966500000000">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 3.5h3.2l1.6 4-2 1.4a12 12 0 005.8 5.8l1.4-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6C9.2 20 3.6 14.4 3.4 5.3A1.6 1.6 0 015 3.5z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
+          <div><b>اتصال مباشر</b><span>+966 50 000 0000</span></div>
+        </a>
+        <a class="contact-item" href="https://instagram.com/" target="_blank" rel="noopener">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5.4" stroke="#7B4B5D" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke="#7B4B5D" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.3" fill="#7B4B5D"/></svg></span>
+          <div><b>إنستقرام</b><span>@brezza.sa</span></div>
+        </a>
+        <div class="contact-item">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a7 7 0 1114 0c0 5.4-7 10-7 10z" stroke="#7B4B5D" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.6" fill="#7B4B5D"/></svg></span>
+          <div><b>نخدم في</b><span style="direction:rtl">عنيزة · بريدة — القصيم</span></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="booking reveal" data-d="1" id="bookingForm">
+      <div class="f-row">
+        <div class="field">
+          <label for="name">الاسم</label>
+          <input type="text" id="name" name="name" placeholder="اسمك الكريم" required />
+        </div>
+        <div class="field">
+          <label for="phone">رقم الجوال</label>
+          <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>الخدمة المطلوبة</label>
+        <div class="chip-pick">
+          <input type="radio" name="service" id="s1" value="ركن القهوة" checked /><label for="s1">ركن القهوة</label>
+          <input type="radio" name="service" id="s2" value="ركن التيراميسو" /><label for="s2">ركن التيراميسو</label>
+          <input type="radio" name="service" id="s3" value="قهوة + تيراميسو" /><label for="s3">الاثنين معًا</label>
+          <input type="radio" name="service" id="s4" value="باقة مفصّلة" /><label for="s4">باقة مفصّلة</label>
+        </div>
+      </div>
+
+      <div class="f-row">
+        <div class="field">
+          <label for="city">المدينة</label>
+          <select id="city" name="city">
+            <option>عنيزة</option>
+            <option>بريدة</option>
+            <option>مدينة أخرى في القصيم</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="date">تاريخ المناسبة</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+      </div>
+
+      <div class="f-row">
+        <div class="field">
+          <label for="guests">عدد الضيوف تقريبًا</label>
+          <input type="number" id="guests" name="guests" min="1" placeholder="مثال: ٨٠" />
+        </div>
+        <div class="field">
+          <label for="type">نوع المناسبة</label>
+          <select id="type" name="type">
+            <option>حفل تخرّج</option>
+            <option>ملكة / زواج</option>
+            <option>مولود</option>
+            <option>افتتاح محل</option>
+            <option>مناسبة شركة</option>
+            <option>تجمّع عائلي</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">تفاصيل إضافية</label>
+        <textarea id="notes" name="notes" placeholder="اكتب أي شي تبينا ننتبه له — الموقع، الوقت، طلبات خاصة…"></textarea>
+      </div>
+
+      <button type="submit" class="cta-btn yellow">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
+        أرسل الطلب على واتساب
+      </button>
+      <p class="form-note">نرجع لك بعرض سعر خلال ساعات قليلة بإذن الله.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================= الفوتر ============================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="brand">
+          <span class="logo-txt">BREZZA</span>
+          <svg class="palm" viewBox="0 0 32 36" aria-hidden="true"><use href="#palm"/></svg>
+        </div>
+        <p class="f-about">
+          تأجير يومي لركن القهوة والتيراميسو في عنيزة وبريدة. نجي بكل شي جاهز،
+          ونخلّي ضيافتك تتكلّم عنك.
+        </p>
+        <div class="socials">
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="إنستقرام">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FBD3C6"><rect x="3" y="3" width="18" height="18" rx="5.4" stroke-width="1.9"/><circle cx="12" cy="12" r="4" stroke-width="1.9"/><circle cx="17.2" cy="6.8" r="1.3" fill="#FBD3C6" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="واتساب">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="#FBD3C6"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
+          </a>
+          <a href="tel:+966500000000" aria-label="اتصال">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FBD3C6"><path d="M5 3.5h3.2l1.6 4-2 1.4a12 12 0 005.8 5.8l1.4-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6C9.2 20 3.6 14.4 3.4 5.3A1.6 1.6 0 015 3.5z" stroke-width="1.9" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#how">كيف نشتغل</a></li>
+          <li><a href="#packages">الباقات</a></li>
+          <li><a href="#faq">أسئلة شائعة</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li><span>عنيزة — القصيم</span></li>
+          <li><span>بريدة — القصيم</span></li>
+          <li><a href="tel:+966500000000" dir="ltr" style="display:inline-block">+966 50 000 0000</a></li>
+          <li><span>يوميًا ٩ص — ١٢م</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-bottom">
+      <span>© <span id="year">2026</span> BREZZA — جميع الحقوق محفوظة</span>
+      <span>صُنع بحب في القصيم ☕</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a12 12 0 01-5.9-5.2c-.4-.7-.9-1.7-.9-2.6 0-.9.5-1.4.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3 0 .1 0 .6-.2 1.2z"/></svg>
+</a>
+
+<button class="to-top" id="toTop" aria-label="العودة للأعلى">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFF8F3"><path d="M12 19V5M5 12l7-7 7 7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== رقم التواصل — غيّره من هنا فقط ===== */
+  var WHATSAPP = '966500000000';
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ===== شريط التقدم + الهيدر + زر الأعلى ===== */
+  var nav = document.getElementById('nav');
+  var bar = document.getElementById('progress');
+  var toTop = document.getElementById('toTop');
+
+  function onScroll(){
+    var y = window.scrollY;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 500);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  toTop.addEventListener('click', function(){
+    window.scrollTo({ top:0, behavior: reduced ? 'auto' : 'smooth' });
+  });
+
+  /* ===== قائمة الجوال ===== */
+  var burger = document.getElementById('burger');
+  var mob = document.getElementById('mobileMenu');
+  function closeMenu(){
+    burger.classList.remove('open');
+    mob.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    var open = mob.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+
+  /* ===== ظهور العناصر عند التمرير ===== */
+  var revealables = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:.14, rootMargin:'0px 0px -60px 0px' });
+    revealables.forEach(function(el){ io.observe(el); });
+  } else {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ===== عدّاد الأرقام ===== */
+  var counters = document.querySelectorAll('[data-count]');
+  function runCounter(el){
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    if(reduced){ el.textContent = target.toLocaleString('ar-EG') + suffix; return; }
+    var start = performance.now(), dur = 1900;
+    function tick(now){
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('ar-EG') + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ runCounter(en.target); cio.unobserve(en.target); }
+      });
+    }, { threshold:.5 });
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(runCounter);
+  }
+
+  /* ===== الأسئلة الشائعة ===== */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      var body = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ===== تتبّع القسم النشط ===== */
+  var links = Array.prototype.slice.call(document.querySelectorAll('#menu a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function spy(){
+    var pos = window.scrollY + 160, current = -1;
+    sections.forEach(function(sec, i){ if(sec && sec.offsetTop <= pos) current = i; });
+    links.forEach(function(a, i){ a.classList.toggle('active', i === current); });
+  }
+  window.addEventListener('scroll', spy, { passive:true });
+  spy();
+
+  /* ===== حركة العربة مع المؤشر ===== */
+  var stage = document.getElementById('cartStage');
+  var cart = stage && stage.querySelector('.cart-svg');
+  if(cart && !reduced && window.matchMedia('(hover:hover)').matches){
+    stage.addEventListener('mousemove', function(e){
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5;
+      var y = (e.clientY - r.top) / r.height - .5;
+      cart.style.transform = 'rotateY(' + (x * 12) + 'deg) rotateX(' + (-y * 10) + 'deg)';
+      cart.style.animationPlayState = 'paused';
+    });
+    stage.addEventListener('mouseleave', function(){
+      cart.style.transform = '';
+      cart.style.animationPlayState = '';
+    });
+  }
+
+  /* ===== إمالة بطاقات الخدمات ===== */
+  if(!reduced && window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.svc').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        card.style.transform = 'translateY(-12px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg)';
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  /* ===== اختيار الباقة يعبّي النموذج ===== */
+  document.querySelectorAll('[data-pkg]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var val = btn.dataset.pkg;
+      var match = document.querySelector('.chip-pick input[value="' + val + '"]');
+      if(match) match.checked = true;
+      else {
+        var full = document.getElementById('s3');
+        if(val.indexOf('تيراميسو') > -1 && full) full.checked = true;
+      }
+    });
+  });
+
+  /* ===== إرسال الطلب على واتساب ===== */
+  var form = document.getElementById('bookingForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = new FormData(form);
+    var lines = [
+      'السلام عليكم، أبغى أحجز من موقع بريزا 🌴',
+      '',
+      '• الاسم: ' + (f.get('name') || '-'),
+      '• الجوال: ' + (f.get('phone') || '-'),
+      '• الخدمة: ' + (f.get('service') || '-'),
+      '• المدينة: ' + (f.get('city') || '-'),
+      '• التاريخ: ' + (f.get('date') || '-'),
+      '• عدد الضيوف: ' + (f.get('guests') || '-'),
+      '• نوع المناسبة: ' + (f.get('type') || '-')
+    ];
+    var notes = (f.get('notes') || '').trim();
+    if(notes) lines.push('• ملاحظات: ' + notes);
+
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+  });
+
+  /* ===== أقل تاريخ للحجز = بعد ٣ أيام ===== */
+  var dateInput = document.getElementById('date');
+  var min = new Date();
+  min.setDate(min.getDate() + 3);
+  dateInput.min = min.toISOString().split('T')[0];
+
+  /* ===== سنة الفوتر ===== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ===== تحديث روابط واتساب من المتغيّر ===== */
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
+    a.href = 'https://wa.me/' + WHATSAPP;
+  });
+})();
+</script>
+</body>
+</html>
