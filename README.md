@@ -105,7 +105,23 @@ tools/generate-palm-assets.mjs  مولّد أصول النخيل (node tools/gen
 
 # BREZZA — موقع تأجير كيترنق القهوة والتيراميسو
 
-المسار: **`public/brezza/index.html`**
+المصدر: **`public/brezza/index.html`** — والموقع منشور على:
+
+**https://amoree870.github.io/la-hint-website-/**
+
+## خريطة الروابط بعد النشر
+
+| الرابط | الصفحة |
+|---|---|
+| `/` | موقع BREZZA (الصفحة الرئيسية) |
+| `/brezza/` | نفس موقع BREZZA — رابط بديل يبقى شغّالًا |
+| `/la-hint.html` | شاشة الملف الشخصي La Hint |
+
+الترتيب يتم في `tools/arrange-dist.mjs` الذي يعمل تلقائيًا بعد `vite build`.
+تطبيق La Hint مبنيّ بـ `base: './'` فيبقى ملفه في جذر `dist` (باسم `la-hint.html`)
+ولا يُنقل إلى مجلد فرعي — لأن نقله يكسر مسارات `./assets`.
+
+النشر يجري عبر GitHub Actions عند كل دفعة على `main`.
 
 موقع تعريفي عربي كامل (RTL) لمشروع **بريزا**، بهوية بصرية مطابقة لعربة القهوة
 المرفقة: وردي خوخي `#F5A08B`، أصفر شمسي `#FFD11A`، وبرقوقي داكن `#7B4B5D`،

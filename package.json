@@ -6,10 +6,11 @@
   "description": "شاشة ملف تعريف لمقهى La Hint — واجهة عربية بهوية بصرية مستوحاة من نخيل القصيم",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node tools/arrange-dist.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "playwright": "^1.49.1",
     "vite": "^5.4.10"
   },
   "dependencies": {
